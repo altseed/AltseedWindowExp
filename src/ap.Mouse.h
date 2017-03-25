@@ -11,6 +11,12 @@ public:
 	Mouse() {}
 	virtual ~Mouse() {}
 
+	virtual void GetPosition(float& x, float& y) const {}
+
+	virtual void SetPosition(float x, float y) { return 0; }
+
+	virtual float GetWheel() const { return 0; }
+
 	virtual InputState GetMouseButtonState(MouseButtons button) const { return InputState::Free; }
 
 	static Mouse* Create(Window* window);
