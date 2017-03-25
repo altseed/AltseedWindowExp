@@ -133,6 +133,7 @@
     <ClCompile Include="..\src\ap.Touch.cpp" />
     <ClCompile Include="..\src\ap.Window.cpp" />
     <ClCompile Include="..\src\PC\ap.Keyboard_Impl_PC.cpp" />
+    <ClCompile Include="..\src\PC\ap.Mouse_Impl_PC.cpp" />
     <ClCompile Include="..\src\PC\ap.Window_Impl_PC.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +145,7 @@
     <ClInclude Include="..\src\ap.Touch.h" />
     <ClInclude Include="..\src\ap.Window.h" />
     <ClInclude Include="..\src\PC\ap.Keyboard_Impl_PC.h" />
+    <ClInclude Include="..\src\PC\ap.Mouse_Impl_PC.h" />
     <ClInclude Include="..\src\PC\ap.Window_Impl_PC.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

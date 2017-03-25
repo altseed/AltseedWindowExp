@@ -60,6 +60,52 @@ namespace ap
 		Free,
 	};
 
+	/**
+	@brief マウスのボタン一覧を示す列挙型
+	*/
+	enum class MouseButtons : int32_t
+	{
+		/**
+		@brief 左ボタン
+		*/
+		ButtonLeft = 0,
+
+		/**
+		@brief 右ボタン
+		*/
+		ButtonRight = 1,
+
+		/**
+		@brief 中央ボタン
+		*/
+		ButtonMiddle = 2,
+
+		/**
+		@brief サブボタン1
+		*/
+		SubButton1 = 3,
+
+		/**
+		@brief サブボタン2
+		*/
+		SubButton2 = 4,
+
+		/**
+		@brief サブボタン3
+		*/
+		SubButton3 = 5,
+
+		/**
+		@brief サブボタン4
+		*/
+		SubButton4 = 6,
+
+		/**
+		@brief サブボタン5
+		*/
+		SubButton5 = 7,
+	};
+
 	enum class Keys : int32_t
 	{
 		Unknown,
