@@ -13,7 +13,7 @@ public:
 
 	virtual void GetPosition(float& x, float& y) const {}
 
-	virtual void SetPosition(float x, float y) { return 0; }
+	virtual void SetPosition(float x, float y) {}
 
 	virtual float GetWheel() const { return 0; }
 

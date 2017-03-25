@@ -16,6 +16,9 @@
     <ClCompile Include="..\src\PC\ap.Mouse_Impl_PC.cpp">
       <Filter>PC</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\PC\ap.Joystick_Impl_PC.cpp">
+      <Filter>PC</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\ap.Joystick.h" />
@@ -32,6 +35,9 @@
       <Filter>PC</Filter>
     </ClInclude>
     <ClInclude Include="..\src\PC\ap.Mouse_Impl_PC.h">
+      <Filter>PC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\PC\ap.Joystick_Impl_PC.h">
       <Filter>PC</Filter>
     </ClInclude>
   </ItemGroup>
