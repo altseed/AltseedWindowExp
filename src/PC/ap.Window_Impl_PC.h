@@ -18,7 +18,7 @@ namespace ap
 		Window_Impl_PC();
 		virtual ~Window_Impl_PC();
 
-		ErrorCode Initialize(int32_t windowSizeX, int32_t windowSizeY) override;
+		ErrorCode Initialize(const WindowInitializationParameter& parameter) override;
 
 		bool DoEvent() override;
 	};

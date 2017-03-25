@@ -11,7 +11,7 @@ public:
 	Window() {}
 	virtual ~Window() {}
 
-	virtual ErrorCode Initialize(int32_t windowSizeX, int32_t windowSizeY) = 0;
+	virtual ErrorCode Initialize(const WindowInitializationParameter& parameter) = 0;
 
 	virtual bool DoEvent() = 0;
 

@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include <array>
 
 #ifdef __ANDROID__
 #include <jni.h>
@@ -47,4 +48,10 @@ namespace ap
 		Unknown,
 	};
 
+	struct WindowInitializationParameter
+	{
+		int32_t	WindowWidth = 0;
+		int32_t WindowHeight = 0;
+		std::array<void*, 3> UserData;
+	};
 }

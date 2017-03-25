@@ -22,14 +22,14 @@ namespace ap
 		Terminate();
 	}
 
-	ErrorCode Window_Impl_PC::Initialize(int32_t windowSizeX, int32_t windowSizeY)
+	ErrorCode Window_Impl_PC::Initialize(const WindowInitializationParameter& parameter)
 	{
 		if (!glfwInit())
 		{
 			return ErrorCode::FailedInitializeWindowSystem;
 		}
 
-		window = glfwCreateWindow(windowSizeX, windowSizeY, "", nullptr, nullptr);
+		window = glfwCreateWindow(parameter.WindowWidth, parameter.WindowHeight, "", nullptr, nullptr);
 		if (window == nullptr)
 		{
 			glfwTerminate();
