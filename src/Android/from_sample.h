@@ -259,11 +259,7 @@ namespace ap
 	struct engine {
 		struct android_app* app;
 
-		ASensorManager* sensorManager;
-		const ASensor* accelerometerSensor;
-		ASensorEventQueue* sensorEventQueue;
 
-		int animating;
 		EGLDisplay display;
 		EGLSurface surface;
 		EGLContext context;

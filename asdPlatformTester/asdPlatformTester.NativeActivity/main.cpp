@@ -18,6 +18,7 @@
 #define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, "AndroidProject1.NativeActivity", __VA_ARGS__))
 #define LOGW(...) ((void)__android_log_print(ANDROID_LOG_WARN, "AndroidProject1.NativeActivity", __VA_ARGS__))
 
+
 #include "ap.Window_Impl_Android.h"
 
 /**
@@ -31,17 +32,19 @@ void android_main(struct android_app* state) {
 	param->UserData[0] = state;
 	imp->Initialize(*param);
 
-	// ループはスタッフによる開始を待っています。
-
 	while (1) {
 		// 保留中のすべてのイベントを読み取ります。
 
 		imp->DoEvent();
 
-		// アニメーションしない場合、無期限にブロックしてイベントが発生するのを待ちます。
-		// アニメーションする場合、すべてのイベントが読み取られるまでループしてから続行します
-		// アニメーションの次のフレームを描画します。
 		imp->Update();
 
+		ap::draw(&(imp->engine));
+
+		//struct ap::engine* engine = &(imp->engine);
+		//glClearColor(0.3f, 0.1f, 0.5f, 1);
+		//glClear(GL_COLOR_BUFFER_BIT);
+		//eglSwapBuffers(engine->display, engine->surface);
 	}
+
 }

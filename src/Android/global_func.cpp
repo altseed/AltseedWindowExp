@@ -1,4 +1,5 @@
 #include "from_sample.h"
+#include "ap.Window_Impl_Android.h"
 
 
 namespace ap
@@ -69,23 +70,6 @@ namespace ap
 	}
 
 	/**
-	* ディスプレイ内の現在のフレームのみ。
-	*/
-	void engine_draw_frame(struct ap::engine* engine) {
-		if (engine->display == NULL) {
-			// ディスプレイがありません。
-			return;
-		}
-
-		// 色で画面を塗りつぶします。
-		glClearColor(((float)engine->state.x) / engine->width, engine->state.angle,
-			((float)engine->state.y) / engine->height, 1);
-		glClear(GL_COLOR_BUFFER_BIT);
-
-		eglSwapBuffers(engine->display, engine->surface);
-	}
-
-	/**
 	* 現在ディスプレイに関連付けられている EGL コンテキストを削除します。
 	*/
 	void engine_term_display(struct ap::engine* engine) {
@@ -99,7 +83,6 @@ namespace ap
 			}
 			eglTerminate(engine->display);
 		}
-		engine->animating = 0;
 		engine->display = EGL_NO_DISPLAY;
 		engine->context = EGL_NO_CONTEXT;
 		engine->surface = EGL_NO_SURFACE;
@@ -134,7 +117,7 @@ namespace ap
 			// ウィンドウが表示されています。準備してください。
 			if (engine->app->window != NULL) {
 				engine_init_display(engine);
-				engine_draw_frame(engine);
+				//draw(engine);
 			}
 			break;
 		case APP_CMD_TERM_WINDOW:
@@ -142,26 +125,21 @@ namespace ap
 			engine_term_display(engine);
 			break;
 		case APP_CMD_GAINED_FOCUS:
-			// アプリがフォーカスを取得すると、加速度計の監視を開始します。
-			if (engine->accelerometerSensor != NULL) {
-				ASensorEventQueue_enableSensor(engine->sensorEventQueue,
-					engine->accelerometerSensor);
-				// 目標は 1 秒ごとに 60 のイベントを取得することです (米国)。
-				ASensorEventQueue_setEventRate(engine->sensorEventQueue,
-					engine->accelerometerSensor, (1000L / 60) * 1000);
-			}
+			// アプリがフォーカスを取得すると
+
 			break;
 		case APP_CMD_LOST_FOCUS:
-			// アプリがフォーカスを失うと、加速度計の監視を停止します。
-			// これにより、使用していないときのバッテリーを節約できます。
-			if (engine->accelerometerSensor != NULL) {
-				ASensorEventQueue_disableSensor(engine->sensorEventQueue,
-					engine->accelerometerSensor);
-			}
-			// また、アニメーションを停止します。
-			engine->animating = 0;
-			engine_draw_frame(engine);
+			// アプリがフォーカスを失うと
+
 			break;
 		}
+	}
+
+
+	void draw(struct ap::engine* engine)
+	{
+		glClearColor(0.3f, 0.1f, 0.5f, 1);
+		glClear(GL_COLOR_BUFFER_BIT);
+		eglSwapBuffers(engine->display, engine->surface);
 	}
 }

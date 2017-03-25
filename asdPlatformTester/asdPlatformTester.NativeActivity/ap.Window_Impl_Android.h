@@ -5,12 +5,13 @@
 
 namespace ap
 {
+	void draw(struct ap::engine* engine);
+
 	class Window_Impl_Android
 		: public Window
 	{
 	private:
-		struct android_app* state;
-		struct engine engine;
+		
 	public:
 		Window_Impl_Android();
 		virtual ~Window_Impl_Android();
@@ -20,6 +21,8 @@ namespace ap
 		bool DoEvent() override;
 		void Update();
 
+		struct android_app* state;
+		struct engine engine;
 	};
 
 }
