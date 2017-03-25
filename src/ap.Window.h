@@ -12,6 +12,8 @@ public:
 	virtual ~Window() {}
 
 	virtual ErrorCode Initialize() = 0;
+
+	static Window* Create();
 };
 
 }
