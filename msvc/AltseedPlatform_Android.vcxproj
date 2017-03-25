@@ -38,6 +38,7 @@
     <ClCompile Include="..\src\ap.Joystick.cpp" />
     <ClCompile Include="..\src\ap.Keyboard.cpp" />
     <ClCompile Include="..\src\ap.Mouse.cpp" />
+    <ClCompile Include="..\src\ap.Sensor.cpp" />
     <ClCompile Include="..\src\ap.Touch.cpp" />
     <ClCompile Include="..\src\ap.Window.cpp" />
   </ItemGroup>
@@ -46,6 +47,7 @@
     <ClInclude Include="..\src\ap.Joystick.h" />
     <ClInclude Include="..\src\ap.Keyboard.h" />
     <ClInclude Include="..\src\ap.Mouse.h" />
+    <ClInclude Include="..\src\ap.Sensor.h" />
     <ClInclude Include="..\src\ap.Touch.h" />
     <ClInclude Include="..\src\ap.Window.h" />
   </ItemGroup>

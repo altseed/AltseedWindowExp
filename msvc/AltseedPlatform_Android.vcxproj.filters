@@ -7,6 +7,7 @@
     <ClInclude Include="..\src\ap.Keyboard.h" />
     <ClInclude Include="..\src\ap.Mouse.h" />
     <ClInclude Include="..\src\ap.Touch.h" />
+    <ClInclude Include="..\src\ap.Sensor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\ap.Window.cpp" />
@@ -14,5 +15,6 @@
     <ClCompile Include="..\src\ap.Keyboard.cpp" />
     <ClCompile Include="..\src\ap.Mouse.cpp" />
     <ClCompile Include="..\src\ap.Touch.cpp" />
+    <ClCompile Include="..\src\ap.Sensor.cpp" />
   </ItemGroup>
 </Project>
