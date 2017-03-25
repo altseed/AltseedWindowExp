@@ -3,7 +3,7 @@
 
 namespace ap
 {
-	static int engine_init_display(struct ap::engine* engine) {
+	int engine_init_display(struct ap::engine* engine) {
 		// OpenGL ES と EGL の初期化
 
 		/*
@@ -71,7 +71,7 @@ namespace ap
 	/**
 	* ディスプレイ内の現在のフレームのみ。
 	*/
-	static void engine_draw_frame(struct ap::engine* engine) {
+	void engine_draw_frame(struct ap::engine* engine) {
 		if (engine->display == NULL) {
 			// ディスプレイがありません。
 			return;
@@ -88,7 +88,7 @@ namespace ap
 	/**
 	* 現在ディスプレイに関連付けられている EGL コンテキストを削除します。
 	*/
-	static void engine_term_display(struct ap::engine* engine) {
+	void engine_term_display(struct ap::engine* engine) {
 		if (engine->display != EGL_NO_DISPLAY) {
 			eglMakeCurrent(engine->display, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
 			if (engine->context != EGL_NO_CONTEXT) {
@@ -108,7 +108,7 @@ namespace ap
 	/**
 	* 次の入力イベントを処理します。
 	*/
-	static int32_t engine_handle_input(struct ap::android_app* app, AInputEvent* event) {
+	int32_t engine_handle_input(struct ap::android_app* app, AInputEvent* event) {
 		struct ap::engine* engine = (struct ap::engine*)app->userData;
 		if (AInputEvent_getType(event) == AINPUT_EVENT_TYPE_MOTION) {
 			engine->state.x = AMotionEvent_getX(event, 0);
@@ -121,7 +121,7 @@ namespace ap
 	/**
 	* 次のメイン コマンドを処理します。
 	*/
-	static void engine_handle_cmd(struct ap::android_app* app, int32_t cmd) {
+	void engine_handle_cmd(struct ap::android_app* app, int32_t cmd) {
 		struct ap::engine* engine = (struct ap::engine*)app->userData;
 		switch (cmd) {
 		case APP_CMD_SAVE_STATE:
