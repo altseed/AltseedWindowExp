@@ -1,7 +1,7 @@
 #include "ap.Keyboard.h"
 
 #ifdef __ANDROID__
-#include "Android/ap.Keyboard_Impl_Android.h"
+//#include "Android/ap.Keyboard_Impl_Android.h"
 #else
 #include "PC/ap.Keyboard_Impl_PC.h"
 #endif

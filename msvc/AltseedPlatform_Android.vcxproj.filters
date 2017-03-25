@@ -11,6 +11,9 @@
     <ClInclude Include="..\src\Android\ap.Window_Impl_Android.h">
       <Filter>Android</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Android\from_sample.h">
+      <Filter>Android</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\ap.Window.cpp" />
@@ -20,6 +23,9 @@
     <ClCompile Include="..\src\ap.Touch.cpp" />
     <ClCompile Include="..\src\ap.Sensor.cpp" />
     <ClCompile Include="..\src\Android\ap.Window_Impl_Android.cpp">
+      <Filter>Android</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Android\global_func.cpp">
       <Filter>Android</Filter>
     </ClCompile>
   </ItemGroup>

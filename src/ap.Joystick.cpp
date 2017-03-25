@@ -1,7 +1,7 @@
 #include "ap.Joystick.h"
 
 #ifdef __ANDROID__
-#include "Android/ap.Joystick_Impl_Android.h"
+//#include "Android/ap.Joystick_Impl_Android.h"
 #else
 #include "PC/ap.Joystick_Impl_PC.h"
 #endif
