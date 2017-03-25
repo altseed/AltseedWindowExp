@@ -10,6 +10,9 @@
     <ClCompile Include="..\src\PC\ap.Window_Impl_PC.cpp">
       <Filter>PC</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\PC\ap.Keyboard_Impl_PC.cpp">
+      <Filter>PC</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\ap.Joystick.h" />
@@ -20,6 +23,9 @@
     <ClInclude Include="..\src\ap.Window.h" />
     <ClInclude Include="..\src\ap.Base.h" />
     <ClInclude Include="..\src\PC\ap.Window_Impl_PC.h">
+      <Filter>PC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\PC\ap.Keyboard_Impl_PC.h">
       <Filter>PC</Filter>
     </ClInclude>
   </ItemGroup>

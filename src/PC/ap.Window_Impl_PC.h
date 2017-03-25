@@ -21,6 +21,10 @@ namespace ap
 		ErrorCode Initialize(const WindowInitializationParameter& parameter) override;
 
 		bool DoEvent() override;
+
+		void Close() override;
+
+		GLFWwindow* GetNativeWindow() const { return window; }
 	};
 
 }

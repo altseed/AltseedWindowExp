@@ -15,6 +15,8 @@ public:
 
 	virtual bool DoEvent() = 0;
 
+	virtual void Close() {}
+
 	static Window* Create();
 };
 
