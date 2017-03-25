@@ -8,6 +8,9 @@
     <ClInclude Include="..\src\ap.Mouse.h" />
     <ClInclude Include="..\src\ap.Touch.h" />
     <ClInclude Include="..\src\ap.Sensor.h" />
+    <ClInclude Include="..\src\Android\ap.Window_Impl_Android.h">
+      <Filter>Android</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\ap.Window.cpp" />
@@ -16,5 +19,13 @@
     <ClCompile Include="..\src\ap.Mouse.cpp" />
     <ClCompile Include="..\src\ap.Touch.cpp" />
     <ClCompile Include="..\src\ap.Sensor.cpp" />
+    <ClCompile Include="..\src\Android\ap.Window_Impl_Android.cpp">
+      <Filter>Android</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Android">
+      <UniqueIdentifier>{fb80cf63-9cdb-41a0-8f00-65506d468ab3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

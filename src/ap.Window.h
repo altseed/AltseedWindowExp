@@ -8,8 +8,10 @@ namespace ap
 class Window
 {
 public:
-	Window();
-	virtual ~Window();
+	Window() {}
+	virtual ~Window() {}
+
+	virtual ErrorCode Initialize() = 0;
 };
 
 }

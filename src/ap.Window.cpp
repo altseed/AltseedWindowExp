@@ -3,12 +3,4 @@
 namespace ap
 {
 
-Window::Window()
-{
-}
-
-Window::~Window()
-{
-}
-
 }

@@ -35,6 +35,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\Android\ap.Window_Impl_Android.cpp" />
     <ClCompile Include="..\src\ap.Joystick.cpp" />
     <ClCompile Include="..\src\ap.Keyboard.cpp" />
     <ClCompile Include="..\src\ap.Mouse.cpp" />
@@ -43,6 +44,7 @@
     <ClCompile Include="..\src\ap.Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\Android\ap.Window_Impl_Android.h" />
     <ClInclude Include="..\src\ap.Base.h" />
     <ClInclude Include="..\src\ap.Joystick.h" />
     <ClInclude Include="..\src\ap.Keyboard.h" />
