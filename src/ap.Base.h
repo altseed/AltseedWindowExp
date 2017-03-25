@@ -42,6 +42,8 @@ namespace ap
 	enum class ErrorCode
 	{
 		OK,
+		FailedInitializeWindowSystem,
+		FailedCreateWindow,
 		Unknown,
 	};
 

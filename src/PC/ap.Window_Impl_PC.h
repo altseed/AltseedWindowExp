@@ -12,13 +12,15 @@ namespace ap
 	private:
 		GLFWwindow*		window = nullptr;
 
+		void Terminate();
+
 	public:
 		Window_Impl_PC();
 		virtual ~Window_Impl_PC();
 
 		ErrorCode Initialize(int32_t windowSizeX, int32_t windowSizeY) override;
 
-		bool DoEvent() override { return true; }
+		bool DoEvent() override;
 	};
 
 }
