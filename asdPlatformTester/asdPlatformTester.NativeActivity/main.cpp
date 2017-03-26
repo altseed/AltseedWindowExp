@@ -32,19 +32,18 @@ void android_main(struct android_app* state) {
 	param->UserData[0] = state;
 	imp->Initialize(*param);
 
-	while (1) {
-		// 保留中のすべてのイベントを読み取ります。
-
-		imp->DoEvent();
-
+	while (imp->DoEvent()) {
+		
 		imp->Update();
 
-		ap::draw(&(imp->engine));
+		//ap::draw(&(imp->engine));
 
-		//struct ap::engine* engine = &(imp->engine);
-		//glClearColor(0.3f, 0.1f, 0.5f, 1);
-		//glClear(GL_COLOR_BUFFER_BIT);
-		//eglSwapBuffers(engine->display, engine->surface);
+		struct ap::engine* engine = &(imp->engine);
+		glClearColor(0.3f, 0.8f, 0.5f, 1);
+		glClear(GL_COLOR_BUFFER_BIT);
+		eglSwapBuffers(engine->display, engine->surface);
 	}
+
+
 
 }

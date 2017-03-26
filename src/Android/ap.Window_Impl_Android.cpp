@@ -49,10 +49,10 @@ namespace ap
 			// 終了するかどうか確認します。
 			if (state->destroyRequested != 0) {
 				engine_term_display(&engine);
-				return true;
+				return false;
 			}
 		}
-		return true; // ここに来たらアウト？？
+		return true;
 	}
 
 	void Window_Impl_Android::Update()
