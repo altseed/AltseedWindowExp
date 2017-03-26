@@ -56,7 +56,7 @@ namespace ap
 
 	bool Window_Impl_PC::DoEvent()
 	{
-		if (window = nullptr) return false;
+		if (window == nullptr) return false;
 
 		if (glfwWindowShouldClose(window))
 		{

@@ -233,6 +233,41 @@ namespace ap
 		MAX
 	};
 
+	enum class JoystickType : int32_t
+	{
+		PS4,
+		Others,
+	};
+
+	enum class JoystickButtonType : int32_t
+	{
+		Start,
+		Select,
+		
+		Up,
+		Down,
+		Left,
+		Right,
+
+		Triangle,
+		Circle,
+		Square,
+		X,
+
+		L1,
+		R1,
+	};
+
+	enum class JoystickAxisType : int32_t
+	{
+		LeftH,
+		LeftV,
+		RightH,
+		RightV,
+		L2,
+		R2,
+	};
+
 	struct WindowInitializationParameter
 	{
 		int32_t	WindowWidth = 0;

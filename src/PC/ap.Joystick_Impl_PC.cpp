@@ -20,6 +20,12 @@ Joystick_Impl_PC::Joystick_Impl_PC(Window* window)
 	for (int i = 0; i < MAX_JOYSTICKS_NUM; i++)
 	{
 		isPresent[i] = glfwJoystickPresent(i) == GLFW_TRUE;
+
+		//if (isPresent[i])
+		//{
+		//	auto name = glfwGetJoystickName(i);
+		//	printf("Name : %s\n", name);
+		//}
 	}
 }
 

@@ -8,7 +8,7 @@
 
 namespace ap
 {
-	Joystick* Create(Window* window)
+	Joystick* Joystick::Create(Window* window)
 	{
 #ifdef __ANDROID__
 		return new Joystick();

@@ -8,7 +8,7 @@
 
 namespace ap
 {
-	Keyboard* Create(Window* window)
+	Keyboard* Keyboard::Create(Window* window)
 	{
 #ifdef __ANDROID__
 		return new Keyboard();

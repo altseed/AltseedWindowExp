@@ -8,7 +8,7 @@
 
 namespace ap
 {
-	Mouse* Create(Window* window)
+	Mouse* Mouse::Create(Window* window)
 	{
 #ifdef __ANDROID__
 		return new Mouse();
