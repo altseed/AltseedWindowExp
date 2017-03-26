@@ -1,6 +1,8 @@
 
 #pragma once
 
+#include <string>
+
 #include <stdio.h>
 #include <stdint.h>
 #include <array>
@@ -274,11 +276,37 @@ namespace ap
 		Max,
 	};
 
+	enum class GraphicsDeviceType : int32_t
+	{
+		Default = 0,		///< 実行環境で最も安定している描画方法(初期化時に使用)
+		DirectX11 = 1,		///< DirectX11
+		OpenGL = 2,			///< OpenGL
+	};
+
+	enum class ColorSpaceType : int32_t
+	{
+		GammaSpace = 0,	///< ガンマスペース
+		LinearSpace = 1, ///< リニアスペース
+	};
+
+	enum class WindowPositionType : int32_t
+	{
+		Default = 0,		///< OSによる自動選択
+		Centering = 1,		///< プライマリモニタの中央
+	};
+
+
 	struct WindowInitializationParameter
 	{
+		std::u16string	Title;
 		int32_t	WindowWidth = 0;
 		int32_t WindowHeight = 0;
 		bool	IsFullscreenMode = false;
+
+
+		GraphicsDeviceType	GraphicsDevice = GraphicsDeviceType::Default;
+		WindowPositionType	WindowPosition = WindowPositionType::Centering;
+		ColorSpaceType		ColorSpace = ColorSpaceType::GammaSpace;
 
 		std::array<void*, 3> UserData;
 	};
