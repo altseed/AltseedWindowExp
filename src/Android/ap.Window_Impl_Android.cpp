@@ -1,5 +1,23 @@
-#include "from_sample.h"
+#include "ap.AndroidNativeActivityGlue.h"
 #include "ap.Window_Impl_Android.h"
+
+/*
+* Copyright (C) 2010 The Android Open Source Project
+*
+* Apache License Version 2.0 (「本ライセンス」) に基づいてライセンスされます。;
+* 本ライセンスに準拠しない場合はこのファイルを使用できません。
+* 本ライセンスのコピーは、以下の場所から入手できます。
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* 適用される法令または書面での同意によって命じられない限り、本ライセンスに基づいて頒布されるソフトウェアは、
+* 明示黙示を問わず、いかなる保証も条件もなしに現状のまま
+* 頒布されます。
+* 本ライセンスでの権利と制限を規定した文言ついては、
+* 本ライセンスを参照してください。
+*
+*/
+//一部改変
 
 namespace ap
 {
@@ -15,7 +33,7 @@ namespace ap
 
 	ErrorCode Window_Impl_Android::Initialize(const WindowInitializationParameter& parameter)
 	{
-		state =(struct android_app*) parameter.UserData[0];
+		struct android_app* state =(struct android_app*) parameter.UserData[0];
 
 		memset(&engine, 0, sizeof(engine));
 		state->userData = &engine;
@@ -24,16 +42,16 @@ namespace ap
 		engine.app = state;
 
 		if (state->savedState != NULL) {
-			// 以前の保存状態で開始します。復元してください。
+			// 以前の保存状態を復元してください。
 			engine.state = *(struct saved_state*)state->savedState;
 		}
-
 
 		return ErrorCode::OK;
 	}
 
 	bool Window_Impl_Android::DoEvent()
 	{
+		struct android_app* state = engine.app;
 		int ident;
 		int events;
 		struct android_poll_source* source;

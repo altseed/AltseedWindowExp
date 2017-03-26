@@ -1,4 +1,23 @@
-#pragma once 
+#pragma once
+
+/*
+* Copyright (C) 2010 The Android Open Source Project
+*
+* Apache License Version 2.0 (「本ライセンス」) に基づいてライセンスされます。;
+* 本ライセンスに準拠しない場合はこのファイルを使用できません。
+* 本ライセンスのコピーは、以下の場所から入手できます。
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* 適用される法令または書面での同意によって命じられない限り、本ライセンスに基づいて頒布されるソフトウェアは、
+* 明示黙示を問わず、いかなる保証も条件もなしに現状のまま
+* 頒布されます。
+* 本ライセンスでの権利と制限を規定した文言ついては、
+* 本ライセンスを参照してください。
+*
+*/
+//一部改変
+
 #include <poll.h>
 #include <pthread.h>
 #include <sched.h>
@@ -20,11 +39,9 @@
 
 #include <android/log.h>
 
-#define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, "AndroidProject1.NativeActivity", __VA_ARGS__))
-#define LOGW(...) ((void)__android_log_print(ANDROID_LOG_WARN, "AndroidProject1.NativeActivity", __VA_ARGS__))
-
-namespace ap
-{
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 	enum {
 		/**
@@ -153,122 +170,117 @@ namespace ap
 		APP_CMD_DESTROY,
 	};
 
+
+	struct android_poll_source {
+		//このソースの識別子は、LOOPER_ID_MAIN または 
+		//LOOPER_ID_INPUT です。
+		int32_t id;
+
+		// この ident に関連付けられている android_app。
+		struct android_app* app;
+
+		//このソースからのデータの標準プロセスを実行するために
+		//呼び出す関数。
+		void(*process)(struct android_app* app, struct android_poll_source* source);
+	};
+
+	struct android_app {
+		//適切な場合には、アプリケーションはその状態オブジェクトにポインターを合わせることが
+		//できます。
+		void* userData;
+
+		//メイン アプリ コマンド (APP_CMD_*) を処理するための関数を入力します
+		void(*onAppCmd)(struct android_app* app, int32_t cmd);
+
+		//入力イベントを処理するための関数を入力します。現時点で
+		// イベントは既にディスパッチされており、返されるときには完了しています。
+		// イベントを処理したことがある場合は 1 を返し、すべての既定のディスパッチについては
+		// 0 を返します。
+		int32_t(*onInputEvent)(struct android_app* app, AInputEvent* event);
+
+		// このアプリが実行されている ANativeActivity オブジェクト インスタンス。
+		ANativeActivity* activity;
+
+		// このアプリが実行されている現在の構成。
+		AConfiguration* config;
+
+		// これが作成時に指定された最後のインスタンスの保存の状態です。
+		// 状態がない場合は NULL です。必要に応じて使用できます。
+		//メモリーは、解放される位置で APP_CMD_RESUME に対して android_app_exec_cmd()
+		// を呼び出すまで保持され、savedState は NULL に設定されます。
+		// これらの変数は、NULL に初期化される位置で APP_CMD_SAVE_STATE を
+		//処理する場合にのみ変更される必要があり、状態を malloc にして
+		//情報をここに配置します。そうすることで、後でメモリーが
+		//解放されます。
+		void* savedState;
+		size_t savedStateSize;
+
+		// アプリのスレッドに関連付けられている ALooper。
+		ALooper* looper;
+
+		// これが、NULL 以外の場合にアプリがユーザー入力イベントを
+		// 受信する入力キューです。
+		AInputQueue* inputQueue;
+
+		// これが、NULL 以外の場合にアプリが描画できるウィンドウ画面です。
+		ANativeWindow* window;
+
+		// ウィンドウの現在のコンテンツ領域は、ユーザーに対して表示される
+		// ウィンドウのコンテンツが配置される場所です。
+		ARect contentRect;
+
+		// アプリのアクティビティの現在の状態は、APP_CMD_START、
+		// APP_CMD_RESUME、APP_CMD_PAUSE、または APP_CMD_STOP のいずれかです。以下を参照してください。
+		int activityState;
+
+		// これは、アプリケーションの NativeActivity の破棄中および
+		// アプリ スレッドの完了の待機中はゼロ以外になります。
+		int destroyRequested;
+
+		// -------------------------------------------------
+		// 以下はグルー コードの "個人" の実装です。
+
+		pthread_mutex_t mutex;
+		pthread_cond_t cond;
+
+		int msgread;
+		int msgwrite;
+
+		pthread_t thread;
+
+		struct android_poll_source cmdPollSource;
+		struct android_poll_source inputPollSource;
+
+		int running;
+		int stateSaved;
+		int destroyed;
+		int redrawNeeded;
+		AInputQueue* pendingInputQueue;
+		ANativeWindow* pendingWindow;
+		ARect pendingContentRect;
+	};
+
+	struct saved_state {
+
+	};
+
+	struct engine {
+		struct android_app* app;
+
+		EGLDisplay display;
+		EGLSurface surface;
+		EGLContext context;
+		int32_t width;
+		int32_t height;
+		struct saved_state state;
+	};
+
+	int engine_init_display(struct engine* engine);
+	void engine_term_display(struct engine* engine);
+	int32_t engine_handle_input(struct android_app* app, AInputEvent* event);
+	void engine_handle_cmd(struct android_app* app, int32_t cmd);
+
+
 #ifdef __cplusplus
-	extern "C" {
-#endif
-		struct android_poll_source {
-			//このソースの識別子は、LOOPER_ID_MAIN または 
-			//LOOPER_ID_INPUT です。
-			int32_t id;
-
-			// この ident に関連付けられている android_app。
-			struct android_app* app;
-
-			//このソースからのデータの標準プロセスを実行するために
-			//呼び出す関数。
-			void(*process)(struct android_app* app, struct android_poll_source* source);
-		};
-
-
-
-		struct android_app {
-			//適切な場合には、アプリケーションはその状態オブジェクトにポインターを合わせることが
-			//できます。
-			void* userData;
-
-			//メイン アプリ コマンド (APP_CMD_*) を処理するための関数を入力します
-			void(*onAppCmd)(struct android_app* app, int32_t cmd);
-
-			//入力イベントを処理するための関数を入力します。現時点で
-			// イベントは既にディスパッチされており、返されるときには完了しています。
-			// イベントを処理したことがある場合は 1 を返し、すべての既定のディスパッチについては
-			// 0 を返します。
-			int32_t(*onInputEvent)(struct android_app* app, AInputEvent* event);
-
-			// このアプリが実行されている ANativeActivity オブジェクト インスタンス。
-			ANativeActivity* activity;
-
-			// このアプリが実行されている現在の構成。
-			AConfiguration* config;
-
-			// これが作成時に指定された最後のインスタンスの保存の状態です。
-			// 状態がない場合は NULL です。必要に応じて使用できます。
-			//メモリーは、解放される位置で APP_CMD_RESUME に対して android_app_exec_cmd()
-			// を呼び出すまで保持され、savedState は NULL に設定されます。
-			// これらの変数は、NULL に初期化される位置で APP_CMD_SAVE_STATE を
-			//処理する場合にのみ変更される必要があり、状態を malloc にして
-			//情報をここに配置します。そうすることで、後でメモリーが
-			//解放されます。
-			void* savedState;
-			size_t savedStateSize;
-
-			// アプリのスレッドに関連付けられている ALooper。
-			ALooper* looper;
-
-			// これが、NULL 以外の場合にアプリがユーザー入力イベントを
-			// 受信する入力キューです。
-			AInputQueue* inputQueue;
-
-			// これが、NULL 以外の場合にアプリが描画できるウィンドウ画面です。
-			ANativeWindow* window;
-
-			// ウィンドウの現在のコンテンツ領域は、ユーザーに対して表示される
-			// ウィンドウのコンテンツが配置される場所です。
-			ARect contentRect;
-
-			// アプリのアクティビティの現在の状態は、APP_CMD_START、
-			// APP_CMD_RESUME、APP_CMD_PAUSE、または APP_CMD_STOP のいずれかです。以下を参照してください。
-			int activityState;
-
-			// これは、アプリケーションの NativeActivity の破棄中および
-			// アプリ スレッドの完了の待機中はゼロ以外になります。
-			int destroyRequested;
-
-			// -------------------------------------------------
-			// 以下はグルー コードの "個人" の実装です。
-
-			pthread_mutex_t mutex;
-			pthread_cond_t cond;
-
-			int msgread;
-			int msgwrite;
-
-			pthread_t thread;
-
-			struct android_poll_source cmdPollSource;
-			struct android_poll_source inputPollSource;
-
-			int running;
-			int stateSaved;
-			int destroyed;
-			int redrawNeeded;
-			AInputQueue* pendingInputQueue;
-			ANativeWindow* pendingWindow;
-			ARect pendingContentRect;
-		};
-
-
-
-
-		struct saved_state {
-			float angle;
-			int32_t x;
-			int32_t y;
-		};
-
-		/**
-		* アプリの保存状態です。
-		*/
-		struct engine {
-			struct android_app* app;
-
-
-			EGLDisplay display;
-			EGLSurface surface;
-			EGLContext context;
-			int32_t width;
-			int32_t height;
-			struct saved_state state;
-		};
-	}
 }
+#endif
