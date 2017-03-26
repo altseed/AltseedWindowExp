@@ -235,8 +235,8 @@ namespace ap
 
 	enum class JoystickType : int32_t
 	{
+		Other,
 		PS4,
-		Others,
 	};
 
 	enum class JoystickButtonType : int32_t
@@ -252,10 +252,14 @@ namespace ap
 		Triangle,
 		Circle,
 		Square,
-		X,
+		Cross,
 
 		L1,
 		R1,
+		L2,
+		R2,
+
+		Max,
 	};
 
 	enum class JoystickAxisType : int32_t
@@ -266,6 +270,8 @@ namespace ap
 		RightV,
 		L2,
 		R2,
+
+		Max,
 	};
 
 	struct WindowInitializationParameter
