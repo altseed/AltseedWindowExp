@@ -76,4 +76,14 @@ float Joystick_Impl_PC::GetAxisState(int32_t joystickIndex, int32_t axisIndex) c
 	return currentAxis[joystickIndex][axisIndex];
 }
 
+int32_t Joystick_Impl_PC::GetButtonCount(int32_t joystickIndex) const
+{
+	return buttonCount[joystickIndex];
+}
+
+int32_t Joystick_Impl_PC::GetAxisCount(int32_t joystickIndex) const
+{
+	return axisCount[joystickIndex];
+}
+
 }

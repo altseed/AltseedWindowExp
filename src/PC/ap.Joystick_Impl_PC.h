@@ -36,6 +36,10 @@ namespace ap
 		InputState GetButtonState(int32_t joystickIndex, int32_t buttonIndex) const;
 
 		float GetAxisState(int32_t joystickIndex, int32_t axisIndex) const;
+
+		int32_t GetButtonCount(int32_t joystickIndex) const;
+
+		int32_t GetAxisCount(int32_t joystickIndex) const;
 	};
 
 }
