@@ -15,11 +15,9 @@
 *
 */
 
-#define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, "AndroidProject1.NativeActivity", __VA_ARGS__))
-#define LOGW(...) ((void)__android_log_print(ANDROID_LOG_WARN, "AndroidProject1.NativeActivity", __VA_ARGS__))
-
 
 #include "ap.Window_Impl_Android.h"
+#include "ap.AndroidNativeActivityGlue.h"
 
 /**
 * これは、android_native_app_glue を使用しているネイティブ アプリケーション
@@ -36,9 +34,7 @@ void android_main(struct android_app* state) {
 		
 		imp->Update();
 
-		//ap::draw(&(imp->engine));
-
-		struct ap::engine* engine = &(imp->engine);
+		struct engine* engine = &(imp->engine);
 		glClearColor(0.3f, 0.8f, 0.5f, 1);
 		glClear(GL_COLOR_BUFFER_BIT);
 		eglSwapBuffers(engine->display, engine->surface);
