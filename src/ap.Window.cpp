@@ -1,6 +1,8 @@
 #include "ap.Window.h"
 
-#ifdef __ANDROID__
+#if defined(_OTHER)
+#include "Other/ap.Window_Impl_Other.h"
+#elif defined(__ANDROID__)
 #include "Android/ap.Window_Impl_Android.h"
 #else
 #include "PC/ap.Window_Impl_PC.h"
@@ -10,7 +12,9 @@ namespace ap
 {
 	Window* Window::Create()
 	{
-#ifdef __ANDROID__
+#if defined(_OTHER)
+
+#elif defined(__ANDROID__)
 		return new Window_Impl_Android();
 #else
 		return new Window_Impl_PC();

@@ -7,7 +7,10 @@
 #include <stdint.h>
 #include <array>
 
-#ifdef __ANDROID__
+#if defined(_OTHER)
+
+#elif defined(__ANDROID__)
+
 #include <jni.h>
 #include <errno.h>
 

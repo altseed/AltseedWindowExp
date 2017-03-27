@@ -4,6 +4,10 @@
 #include <ap.Window.h>
 #include <ap.Joystick.h>
 
+#if defined(_OTHER)
+
+#else
+
 #ifdef _WIN64
 
 #ifdef _DEBUG
@@ -23,6 +27,8 @@
 #endif
 
 #pragma comment(lib,"opengl32.lib")
+
+#endif
 
 int main()
 {
