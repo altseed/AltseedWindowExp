@@ -13,7 +13,7 @@ namespace ap
 	Window* Window::Create()
 	{
 #if defined(_OTHER)
-
+		return new Window_Impl_Other();
 #elif defined(__ANDROID__)
 		return new Window_Impl_Android();
 #else
