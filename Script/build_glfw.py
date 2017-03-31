@@ -31,29 +31,29 @@ with aceutils.CurrentDir('../Downloads'):
 			aceutils.call(aceutils.cmd_compile + r'ALL_BUILD.vcxproj /p:configuration=Debug')
 			aceutils.call(aceutils.cmd_compile + r'ALL_BUILD.vcxproj /p:configuration=Release')
 	
-	aceutils.mkdir(r"../Dev/include/GLFW/")
+	aceutils.mkdir(r"../include/GLFW/")
 
 	if aceutils.isWin():
 
-		aceutils.mkdir(r'../Dev/lib/x86/')
-		aceutils.mkdir(r'../Dev/lib/x86/Debug')
-		aceutils.mkdir(r'../Dev/lib/x86/Release')
+		aceutils.mkdir(r'../lib/x86/')
+		aceutils.mkdir(r'../lib/x86/Debug')
+		aceutils.mkdir(r'../lib/x86/Release')
 
-		aceutils.mkdir(r'../Dev/lib/x64/')
-		aceutils.mkdir(r'../Dev/lib/x64/Debug')
-		aceutils.mkdir(r'../Dev/lib/x64/Release')
+		aceutils.mkdir(r'../lib/x64/')
+		aceutils.mkdir(r'../lib/x64/Debug')
+		aceutils.mkdir(r'../lib/x64/Release')
 
-		aceutils.copy(pathname + r'/include/GLFW/glfw3.h', r'../Dev/include/GLFW/')
-		aceutils.copy(pathname + r'/include/GLFW/glfw3native.h', r'../Dev/include/GLFW')
+		aceutils.copy(pathname + r'/include/GLFW/glfw3.h', r'../include/GLFW/')
+		aceutils.copy(pathname + r'/include/GLFW/glfw3native.h', r'../include/GLFW')
 
-		aceutils.copy(r'glfw_bin/src/Debug/glfw3.lib', r'../Dev/lib/x86/Debug/')
-		aceutils.copy(r'glfw_bin/src/Release/glfw3.lib', r'../Dev/lib/x86/Release/')
+		aceutils.copy(r'glfw_bin/src/Debug/glfw3.lib', r'../lib/x86/Debug/')
+		aceutils.copy(r'glfw_bin/src/Release/glfw3.lib', r'../lib/x86/Release/')
 
-		aceutils.copy(r'glfw_bin_x64/src/Debug/glfw3.lib', r'../Dev/lib/x64/Debug/')
-		aceutils.copy(r'glfw_bin_x64/src/Release/glfw3.lib', r'../Dev/lib/x64/Release/')
+		aceutils.copy(r'glfw_bin_x64/src/Debug/glfw3.lib', r'../lib/x64/Debug/')
+		aceutils.copy(r'glfw_bin_x64/src/Release/glfw3.lib', r'../lib/x64/Release/')
 
 	else:
-		aceutils.copy(pathname + r'/include/GLFW/glfw3.h', r'../Dev/include/GLFW/')
-		aceutils.copy(pathname + r'/include/GLFW/glfw3native.h', r'../Dev/include/GLFW')
+		aceutils.copy(pathname + r'/include/GLFW/glfw3.h', r'../include/GLFW/')
+		aceutils.copy(pathname + r'/include/GLFW/glfw3native.h', r'../include/GLFW')
 
-		aceutils.copy(r'glfw_bin/src/libglfw3.a', r'../Dev/lib')
+		aceutils.copy(r'glfw_bin/src/libglfw3.a', r'../lib')
