@@ -133,4 +133,9 @@ namespace ap
 	{
 		glfwSetWindowShouldClose(window, 1);
 	}
+
+	void* Window_Impl_PC::GetHandle() const
+	{
+		return glfwGetWin32Window(window);
+	}
 }

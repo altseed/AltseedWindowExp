@@ -24,6 +24,8 @@ namespace ap
 
 		void Close() override;
 
+		void* GetHandle() const override;
+
 		GLFWwindow* GetNativeWindow() const { return window; }
 	};
 

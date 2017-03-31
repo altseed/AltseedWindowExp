@@ -17,6 +17,8 @@ public:
 
 	virtual void Close() {}
 
+	virtual void* GetHandle() const { return nullptr; }
+
 	static Window* Create();
 };
 
