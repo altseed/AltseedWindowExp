@@ -5,6 +5,9 @@ pathname = 'glfw'
 aceutils.cdToScript()
 aceutils.mkdir('../Downloads')
 
+aceutils.mkdir(r"../include/")
+aceutils.mkdir(r"../lib/")
+
 with aceutils.CurrentDir('../Downloads'):
 	aceutils.rmdir(r"glfw_bin")
 	aceutils.rmdir(r"glfw_bin_x64")
