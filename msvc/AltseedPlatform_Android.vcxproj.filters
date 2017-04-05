@@ -1,37 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="..\src\ap.Window.h" />
+    <ClCompile Include="..\src\ap.Joystick.cpp" />
+    <ClCompile Include="..\src\ap.Keyboard.cpp" />
+    <ClCompile Include="..\src\ap.Mouse.cpp" />
+    <ClCompile Include="..\src\ap.Sensor.cpp" />
+    <ClCompile Include="..\src\ap.Touch.cpp" />
+    <ClCompile Include="..\src\ap.Window.cpp" />
+    <ClCompile Include="..\src\Android\ap.AndroidNativeActivityGlue.c">
+      <Filter>Android</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Android\ap.Window_Impl_Android.cpp">
+      <Filter>Android</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Android\ap.Touch_Impl_Android.cpp">
+      <Filter>Android</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="..\src\ap.Base.h" />
     <ClInclude Include="..\src\ap.Joystick.h" />
     <ClInclude Include="..\src\ap.Keyboard.h" />
     <ClInclude Include="..\src\ap.Mouse.h" />
-    <ClInclude Include="..\src\ap.Touch.h" />
     <ClInclude Include="..\src\ap.Sensor.h" />
-    <ClInclude Include="..\src\Android\ap.Window_Impl_Android.h">
-      <Filter>Android</Filter>
-    </ClInclude>
+    <ClInclude Include="..\src\ap.Touch.h" />
+    <ClInclude Include="..\src\ap.Window.h" />
     <ClInclude Include="..\src\Android\ap.AndroidNativeActivityGlue.h">
       <Filter>Android</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\src\ap.Window.cpp" />
-    <ClCompile Include="..\src\ap.Joystick.cpp" />
-    <ClCompile Include="..\src\ap.Keyboard.cpp" />
-    <ClCompile Include="..\src\ap.Mouse.cpp" />
-    <ClCompile Include="..\src\ap.Touch.cpp" />
-    <ClCompile Include="..\src\ap.Sensor.cpp" />
-    <ClCompile Include="..\src\Android\ap.Window_Impl_Android.cpp">
+    <ClInclude Include="..\src\Android\ap.Touch_Impl_Android.h">
       <Filter>Android</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Android\ap.AndroidNativeActivityGlue.c">
+    </ClInclude>
+    <ClInclude Include="..\src\Android\ap.Window_Impl_Android.h">
       <Filter>Android</Filter>
-    </ClCompile>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Android">
-      <UniqueIdentifier>{fb80cf63-9cdb-41a0-8f00-65506d468ab3}</UniqueIdentifier>
+      <UniqueIdentifier>{81e3e8d7-6589-43cc-83a2-56d8cbf5731b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

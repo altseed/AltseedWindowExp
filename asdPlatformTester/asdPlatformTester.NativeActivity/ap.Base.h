@@ -235,9 +235,15 @@ namespace ap
 
 	struct WindowInitializationParameter
 	{
+		std::u16string	Title;
 		int32_t	WindowWidth = 0;
 		int32_t WindowHeight = 0;
 		bool	IsFullscreenMode = false;
+
+
+		//GraphicsDeviceType	GraphicsDevice = GraphicsDeviceType::Default;
+		//WindowPositionType	WindowPosition = WindowPositionType::Centering;
+		//ColorSpaceType		ColorSpace = ColorSpaceType::GammaSpace;
 
 		std::array<void*, 3> UserData;
 	};

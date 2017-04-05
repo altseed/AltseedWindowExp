@@ -18,6 +18,7 @@
 
 #include "ap.Window_Impl_Android.h"
 #include "ap.AndroidNativeActivityGlue.h"
+#include "ap.Touch_Impl_Android.h"
 
 /**
 * これは、android_native_app_glue を使用しているネイティブ アプリケーション
@@ -25,21 +26,22 @@
 * 入力イベントを受け取ったり他の操作を実行したりします。
 */
 void android_main(struct android_app* state) {
-	ap::Window_Impl_Android* imp = new ap::Window_Impl_Android();
-	ap::WindowInitializationParameter* param = new ap::WindowInitializationParameter();
-	param->UserData[0] = state;
-	imp->Initialize(*param);
+	ap::Window_Impl_Android* window = new ap::Window_Impl_Android();
+	ap::WindowInitializationParameter* windowparam = new ap::WindowInitializationParameter();
+	windowparam->UserData[0] = state;
+	window->Initialize(*windowparam);
+	ap::Touch_Impl_Android* touch = new ap::Touch_Impl_Android(window);
 
-	while (imp->DoEvent()) {
+	while (window->DoEvent()) {
 		
-		imp->Update();
+		window->Update();
 
-		struct engine* engine = &(imp->engine);
-		glClearColor(0.3f, 0.8f, 0.5f, 1);
+		struct engine* engine = &(window->engine);
+
+		float x=0, y=0;
+		touch->GetPosition(x, y);
+		glClearColor(x/engine->width, y/engine->height, 0.5f, 1);
 		glClear(GL_COLOR_BUFFER_BIT);
 		eglSwapBuffers(engine->display, engine->surface);
 	}
-
-
-
 }

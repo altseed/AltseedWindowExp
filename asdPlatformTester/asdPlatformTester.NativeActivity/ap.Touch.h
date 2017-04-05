@@ -12,7 +12,7 @@ namespace ap
 		virtual ~Touch() {}
 
 		virtual void GetPosition(float& x, float& y) = 0;
-		
+
 		static Touch* Create(Window* window);
 	};
 
