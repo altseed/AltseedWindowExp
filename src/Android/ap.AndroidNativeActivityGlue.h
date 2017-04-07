@@ -272,6 +272,8 @@ extern "C" {
 		EGLContext context;
 		int32_t width;
 		int32_t height;
+
+		float touchX, touchY;
 		struct saved_state state;
 	};
 

@@ -36,6 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Android\ap.AndroidNativeActivityGlue.c" />
+    <ClCompile Include="..\src\Android\ap.Touch_Impl_Android.cpp" />
     <ClCompile Include="..\src\Android\ap.Window_Impl_Android.cpp" />
     <ClCompile Include="..\src\ap.Joystick.cpp" />
     <ClCompile Include="..\src\ap.Keyboard.cpp" />
@@ -46,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Android\ap.AndroidNativeActivityGlue.h" />
+    <ClInclude Include="..\src\Android\ap.Touch_Impl_Android.h" />
     <ClInclude Include="..\src\Android\ap.Window_Impl_Android.h" />
     <ClInclude Include="..\src\ap.Base.h" />
     <ClInclude Include="..\src\ap.Joystick.h" />

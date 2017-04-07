@@ -110,7 +110,31 @@ void engine_term_display(struct engine* engine) {
 }
 
 int32_t engine_handle_input(struct android_app* app, AInputEvent* event) {
+	struct engine* engine = (struct engine*)app->userData;
+
 	//入力イベントを処理
+	/* 追加  -- ここから --*/
+
+	switch (AInputEvent_getType(event))
+	{
+	case AINPUT_EVENT_TYPE_MOTION: // モーションイベント
+		switch (AInputEvent_getSource(event))
+		{
+		case AINPUT_SOURCE_TOUCHSCREEN:
+			engine-> touchX = AMotionEvent_getX(event, 0);
+			engine-> touchY = AMotionEvent_getY(event, 0);
+			//engine->touchX = AMotionEvent_getRawX(event, 0);
+			//engine->touchY = AMotionEvent_getRawY(event, 0);
+			LOGI("Touch[0]: X=%.1f Y=%.1f", engine->touchX, engine->touchY);
+		default:
+			break;
+		}
+		break;
+	default:
+		break;
+	}
+
+	/* 追加  -- ここまで --*/
 }
 
 void engine_handle_cmd(struct android_app* app, int32_t cmd) {

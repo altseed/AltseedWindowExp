@@ -204,8 +204,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\Android\ap.Window_Impl_Android.h" />
     <ClInclude Include="ap.AndroidNativeActivityGlue.h" />
     <ClInclude Include="ap.Base.h" />
+    <ClInclude Include="ap.Touch.h" />
+    <ClInclude Include="ap.Touch_Impl_Android.h" />
     <ClInclude Include="ap.Window.h" />
     <ClInclude Include="ap.Window_Impl_Android.h" />
     <ClInclude Include="pch.h" />

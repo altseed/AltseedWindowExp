@@ -307,9 +307,9 @@ namespace ap
 		bool	IsFullscreenMode = false;
 
 
-		GraphicsDeviceType	GraphicsDevice = GraphicsDeviceType::Default;
-		WindowPositionType	WindowPosition = WindowPositionType::Centering;
-		ColorSpaceType		ColorSpace = ColorSpaceType::GammaSpace;
+		//GraphicsDeviceType	GraphicsDevice = GraphicsDeviceType::Default;
+		//WindowPositionType	WindowPosition = WindowPositionType::Centering;
+		//ColorSpaceType		ColorSpace = ColorSpaceType::GammaSpace;
 
 		std::array<void*, 3> UserData;
 	};
