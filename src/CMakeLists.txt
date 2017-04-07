@@ -3,10 +3,12 @@ project(AltseedPlatform CXX)
 
 
 FILE(GLOB cpps *.cpp)
-FILE(GLOB cpps PC/*.cpp)
+FILE(GLOB cpps_pc PC/*.cpp)
+list(APPEND cpps ${cpps_pc})
 
 FILE(GLOB hs *.h)
-FILE(GLOB hs PC/*.h)
+FILE(GLOB hs_pc PC/*.h)
+list(APPEND hs ${hs_pc})
 
 foreach(FILE ${hs}) 
     get_filename_component(PARENT_DIR "${FILE}" DIRECTORY)
