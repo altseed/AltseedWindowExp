@@ -52,4 +52,4 @@ set_target_properties(AltseedPlatform_Test PROPERTIES LINKER_LANGUAGE CXX)
 set_property(TARGET AltseedPlatform_Test PROPERTY CXX_STANDARD 11)
 set_property(TARGET AltseedPlatform_Test PROPERTY CXX_STANDARD_REQUIRED ON)
 
-target_link_libraries(AltseedPlatform_Test LINK_PUBLIC AltseedPlatform)
+target_link_libraries(AltseedPlatform_Test LINK_PUBLIC AltseedPlatform glfw3)
