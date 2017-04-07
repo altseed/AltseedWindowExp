@@ -1,8 +1,7 @@
 
 #include <stdio.h>
 
-#include <ap.Window.h>
-#include <ap.Joystick.h>
+#include <AltseedPlatform.h>
 
 #if defined(_OTHER)
 

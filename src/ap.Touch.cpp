@@ -1,11 +1,11 @@
-#include "ap.Touch.h"
+﻿#include "ap.Touch.h"
 
 #if defined(_OTHER)
 
 #elif defined(__ANDROID__)
 #include "Android/ap.Touch_Impl_Android.h"
 #else
-#include "PC/ap.Touch_Impl_PC.h"
+//#include "PC/ap.Touch_Impl_PC.h"
 #endif
 
 namespace ap
@@ -17,7 +17,7 @@ namespace ap
 #elif defined(__ANDROID__)
 		return new Touch_Impl_Android(window);
 #else
-		return new Touch_Impl_PC(window);
+		return new Touch();
 #endif
 	}
 }

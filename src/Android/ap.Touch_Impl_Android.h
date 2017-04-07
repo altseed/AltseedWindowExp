@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "ap.AndroidNativeActivityGlue.h"
 #include "ap.Window_Impl_Android.h"

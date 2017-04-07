@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "ap.Base.h"
 
@@ -11,7 +11,7 @@ namespace ap
 		Touch() {}
 		virtual ~Touch() {}
 
-		virtual void GetPosition(float& x, float& y) = 0;
+		virtual void GetPosition(float& x, float& y) {}
 		
 		static Touch* Create(Window* window);
 	};

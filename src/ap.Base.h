@@ -1,4 +1,4 @@
-
+ï»¿
 #pragma once
 
 #include <string>
@@ -66,47 +66,47 @@ namespace ap
 	};
 
 	/**
-	@brief ƒ}ƒEƒX‚Ìƒ{ƒ^ƒ“ˆê——‚ğ¦‚·—ñ‹“Œ^
+	@brief ãƒã‚¦ã‚¹ã®ãƒœã‚¿ãƒ³ä¸€è¦§ã‚’ç¤ºã™åˆ—æŒ™å‹
 	*/
 	enum class MouseButtons : int32_t
 	{
 		/**
-		@brief ¶ƒ{ƒ^ƒ“
+		@brief å·¦ãƒœã‚¿ãƒ³
 		*/
 		ButtonLeft = 0,
 
 		/**
-		@brief ‰Eƒ{ƒ^ƒ“
+		@brief å³ãƒœã‚¿ãƒ³
 		*/
 		ButtonRight = 1,
 
 		/**
-		@brief ’†‰›ƒ{ƒ^ƒ“
+		@brief ä¸­å¤®ãƒœã‚¿ãƒ³
 		*/
 		ButtonMiddle = 2,
 
 		/**
-		@brief ƒTƒuƒ{ƒ^ƒ“1
+		@brief ã‚µãƒ–ãƒœã‚¿ãƒ³1
 		*/
 		SubButton1 = 3,
 
 		/**
-		@brief ƒTƒuƒ{ƒ^ƒ“2
+		@brief ã‚µãƒ–ãƒœã‚¿ãƒ³2
 		*/
 		SubButton2 = 4,
 
 		/**
-		@brief ƒTƒuƒ{ƒ^ƒ“3
+		@brief ã‚µãƒ–ãƒœã‚¿ãƒ³3
 		*/
 		SubButton3 = 5,
 
 		/**
-		@brief ƒTƒuƒ{ƒ^ƒ“4
+		@brief ã‚µãƒ–ãƒœã‚¿ãƒ³4
 		*/
 		SubButton4 = 6,
 
 		/**
-		@brief ƒTƒuƒ{ƒ^ƒ“5
+		@brief ã‚µãƒ–ãƒœã‚¿ãƒ³5
 		*/
 		SubButton5 = 7,
 	};
@@ -114,12 +114,12 @@ namespace ap
 	enum class Keys : int32_t
 	{
 		Unknown,
-		Space,			///< ƒXƒy[ƒX
-		Apostrophe,		///< F (US”z—ñ‚Å‚Í ` )
-		Comma,			///< C
-		Minus,			///< |
-		Period,			///< D
-		Slash,			///< ^
+		Space,			///< ã‚¹ãƒšãƒ¼ã‚¹
+		Apostrophe,		///< ï¼š (USé…åˆ—ã§ã¯ ` )
+		Comma,			///< ï¼Œ
+		Minus,			///< ï¼
+		Period,			///< ï¼
+		Slash,			///< ï¼
 		Num0,			///< 0
 		Num1,			///< 1
 		Num2,			///< 2
@@ -130,8 +130,8 @@ namespace ap
 		Num7,			///< 7
 		Num8,			///< 8
 		Num9,			///< 9
-		Semicolon,		///< G
-		Equal,			///< O (US”z—ñ‚Å‚Í  )
+		Semicolon,		///< ï¼›
+		Equal,			///< ï¼¾ (USé…åˆ—ã§ã¯ ï¼ )
 		A,				///< A
 		B,				///< B
 		C,				///< C
@@ -158,10 +158,10 @@ namespace ap
 		X,				///< X
 		Y,				///< Y
 		Z,				///< Z
-		LeftBracket,	///< @ (US”z—ñ‚Å‚Í m )
-		Backslash,		///< ] (US”z—ñ‚Å‚Í _ )
-		RightBracket,	///< [ (US”z—ñ‚Å‚Í n )
-		GraveAccent,	///< ”¼Šp/‘SŠp
+		LeftBracket,	///< @ (USé…åˆ—ã§ã¯ ï¼» )
+		Backslash,		///< ] (USé…åˆ—ã§ã¯ ï¼¼ )
+		RightBracket,	///< [ (USé…åˆ—ã§ã¯ ï¼½ )
+		GraveAccent,	///< åŠè§’/å…¨è§’
 		World1,
 		World2,
 		Escape,			///< Esc
@@ -170,10 +170,10 @@ namespace ap
 		Backspace,		///< BackSpace
 		Insert,			///< Insert 
 		Delete,			///< Delete 
-		Right,			///< ¨
-		Left,			///< ©
-		Down,			///< «
-		Up,				///< ª
+		Right,			///< â†’
+		Left,			///< â†
+		Down,			///< â†“
+		Up,				///< â†‘
 		PageUp,			///< PageUp
 		PageDown,		///< PageDown
 		Home,			///< Home 
@@ -208,32 +208,32 @@ namespace ap
 		F23,			///< F23
 		F24,			///< F24
 		F25,			///< F25
-		Keypad0,		///< ƒeƒ“ƒL[‚Ì0
-		Keypad1,		///< ƒeƒ“ƒL[‚Ì1
-		Keypad2,		///< ƒeƒ“ƒL[‚Ì2
-		Keypad3,		///< ƒeƒ“ƒL[‚Ì3
-		Keypad4,		///< ƒeƒ“ƒL[‚Ì4
-		Keypad5,		///< ƒeƒ“ƒL[‚Ì5
-		Keypad6,		///< ƒeƒ“ƒL[‚Ì6
-		Keypad7,		///< ƒeƒ“ƒL[‚Ì7
-		Keypad8,		///< ƒeƒ“ƒL[‚Ì8
-		Keypad9,		///< ƒeƒ“ƒL[‚Ì9
-		KeypadDecimal,	///< ƒeƒ“ƒL[‚ÌD
-		KeypadDivide,	///< ƒeƒ“ƒL[‚Ì^
-		KeypadMultiply,	///< ƒeƒ“ƒL[‚Ì–
-		KeypadSubstract,///< ƒeƒ“ƒL[‚Ì|
-		KeypadAdd,		///< ƒeƒ“ƒL[‚Ì{
-		KeypadEnter,	///< ƒeƒ“ƒL[‚ÌEnter
-		KeypadEqual,	///< ƒeƒ“ƒL[‚Ì
-		LeftShift,		///< ¶Shift
-		LeftControl,	///< ¶Ctrl
-		LeftAlt,		///< ¶Alt
-		LeftWin,		///< ¶Win
-		RightShift,		///< ‰EShift
-		RightControl,	///< ‰ECtrl
-		RightAlt,		///< ‰EAlt
-		RightWin,		///< ‰EWin
-		Menu,			///< ƒRƒ“ƒeƒLƒXƒgƒƒjƒ…[
+		Keypad0,		///< ãƒ†ãƒ³ã‚­ãƒ¼ã®0
+		Keypad1,		///< ãƒ†ãƒ³ã‚­ãƒ¼ã®1
+		Keypad2,		///< ãƒ†ãƒ³ã‚­ãƒ¼ã®2
+		Keypad3,		///< ãƒ†ãƒ³ã‚­ãƒ¼ã®3
+		Keypad4,		///< ãƒ†ãƒ³ã‚­ãƒ¼ã®4
+		Keypad5,		///< ãƒ†ãƒ³ã‚­ãƒ¼ã®5
+		Keypad6,		///< ãƒ†ãƒ³ã‚­ãƒ¼ã®6
+		Keypad7,		///< ãƒ†ãƒ³ã‚­ãƒ¼ã®7
+		Keypad8,		///< ãƒ†ãƒ³ã‚­ãƒ¼ã®8
+		Keypad9,		///< ãƒ†ãƒ³ã‚­ãƒ¼ã®9
+		KeypadDecimal,	///< ãƒ†ãƒ³ã‚­ãƒ¼ã®ï¼
+		KeypadDivide,	///< ãƒ†ãƒ³ã‚­ãƒ¼ã®ï¼
+		KeypadMultiply,	///< ãƒ†ãƒ³ã‚­ãƒ¼ã®ï¼Š
+		KeypadSubstract,///< ãƒ†ãƒ³ã‚­ãƒ¼ã®ï¼
+		KeypadAdd,		///< ãƒ†ãƒ³ã‚­ãƒ¼ã®ï¼‹
+		KeypadEnter,	///< ãƒ†ãƒ³ã‚­ãƒ¼ã®Enter
+		KeypadEqual,	///< ãƒ†ãƒ³ã‚­ãƒ¼ã®ï¼
+		LeftShift,		///< å·¦Shift
+		LeftControl,	///< å·¦Ctrl
+		LeftAlt,		///< å·¦Alt
+		LeftWin,		///< å·¦Win
+		RightShift,		///< å³Shift
+		RightControl,	///< å³Ctrl
+		RightAlt,		///< å³Alt
+		RightWin,		///< å³Win
+		Menu,			///< ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãƒ¡ãƒ‹ãƒ¥ãƒ¼
 		Last,
 		MAX
 	};
@@ -281,21 +281,21 @@ namespace ap
 
 	enum class GraphicsDeviceType : int32_t
 	{
-		Default = 0,		///< ÀsŠÂ‹«‚ÅÅ‚àˆÀ’è‚µ‚Ä‚¢‚é•`‰æ•û–@(‰Šú‰»‚Ég—p)
+		Default = 0,		///< å®Ÿè¡Œç’°å¢ƒã§æœ€ã‚‚å®‰å®šã—ã¦ã„ã‚‹æç”»æ–¹æ³•(åˆæœŸåŒ–æ™‚ã«ä½¿ç”¨)
 		DirectX11 = 1,		///< DirectX11
 		OpenGL = 2,			///< OpenGL
 	};
 
 	enum class ColorSpaceType : int32_t
 	{
-		GammaSpace = 0,	///< ƒKƒ“ƒ}ƒXƒy[ƒX
-		LinearSpace = 1, ///< ƒŠƒjƒAƒXƒy[ƒX
+		GammaSpace = 0,	///< ã‚¬ãƒ³ãƒã‚¹ãƒšãƒ¼ã‚¹
+		LinearSpace = 1, ///< ãƒªãƒ‹ã‚¢ã‚¹ãƒšãƒ¼ã‚¹
 	};
 
 	enum class WindowPositionType : int32_t
 	{
-		Default = 0,		///< OS‚É‚æ‚é©“®‘I‘ğ
-		Centering = 1,		///< ƒvƒ‰ƒCƒ}ƒŠƒ‚ƒjƒ^‚Ì’†‰›
+		Default = 0,		///< OSã«ã‚ˆã‚‹è‡ªå‹•é¸æŠ
+		Centering = 1,		///< ãƒ—ãƒ©ã‚¤ãƒãƒªãƒ¢ãƒ‹ã‚¿ã®ä¸­å¤®
 	};
 
 
@@ -305,11 +305,9 @@ namespace ap
 		int32_t	WindowWidth = 0;
 		int32_t WindowHeight = 0;
 		bool	IsFullscreenMode = false;
-
-
-		//GraphicsDeviceType	GraphicsDevice = GraphicsDeviceType::Default;
-		//WindowPositionType	WindowPosition = WindowPositionType::Centering;
-		//ColorSpaceType		ColorSpace = ColorSpaceType::GammaSpace;
+		GraphicsDeviceType	GraphicsDevice = GraphicsDeviceType::Default;
+		WindowPositionType	WindowPosition = WindowPositionType::Centering;
+		ColorSpaceType		ColorSpace = ColorSpaceType::GammaSpace;
 
 		std::array<void*, 3> UserData;
 	};

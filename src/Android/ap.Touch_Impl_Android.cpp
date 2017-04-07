@@ -1,4 +1,4 @@
-#include "ap.Touch_Impl_Android.h"
+﻿#include "ap.Touch_Impl_Android.h"
 #include <android/input.h>
 
 #define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, "threaded_app", __VA_ARGS__))

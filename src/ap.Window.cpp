@@ -1,4 +1,4 @@
-#include "ap.Window.h"
+﻿#include "ap.Window.h"
 
 #if defined(_OTHER)
 #include "Other/ap.Window_Impl_Other.h"
