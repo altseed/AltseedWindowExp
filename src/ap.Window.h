@@ -19,6 +19,27 @@ public:
 
 	virtual void* GetHandle() const { return nullptr; }
 
+	/**
+		@brief	Show back buffer.
+		@note
+		This function is for OpenGL
+	*/
+	virtual void Present() {}
+
+	/**
+	@brief	Make context current.
+	@note
+	This function is for OpenGL
+	*/
+	virtual void MakeContextCurrent() {}
+
+	/**
+	@brief	Make context none.
+	@note
+	This function is for OpenGL
+	*/
+	virtual void MakeContextNone() {}
+
 	static Window* Create();
 };
 

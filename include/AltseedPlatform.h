@@ -304,7 +304,6 @@ namespace ap
 		int32_t	WindowWidth = 0;
 		int32_t WindowHeight = 0;
 		bool	IsFullscreenMode = false;
-		
 		GraphicsDeviceType	GraphicsDevice = GraphicsDeviceType::Default;
 		WindowPositionType	WindowPosition = WindowPositionType::Centering;
 		ColorSpaceType		ColorSpace = ColorSpaceType::GammaSpace;
@@ -421,6 +420,27 @@ public:
 	virtual void Close() {}
 
 	virtual void* GetHandle() const { return nullptr; }
+
+	/**
+		@brief	Show back buffer.
+		@note
+		This function is for OpenGL
+	*/
+	virtual void Present() {}
+
+	/**
+	@brief	Make context current.
+	@note
+	This function is for OpenGL
+	*/
+	virtual void MakeContextCurrent() {}
+
+	/**
+	@brief	Make context none.
+	@note
+	This function is for OpenGL
+	*/
+	virtual void MakeContextNone() {}
 
 	static Window* Create();
 };

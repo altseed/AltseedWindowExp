@@ -11,6 +11,7 @@ namespace ap
 	{
 	private:
 		GLFWwindow*		window = nullptr;
+		bool			isOpenGLMode = true;
 
 		void Terminate();
 
@@ -25,6 +26,12 @@ namespace ap
 		void Close() override;
 
 		void* GetHandle() const override;
+
+		void Present() override;
+
+		void MakeContextCurrent() override;
+
+		void MakeContextNone() override;
 
 		GLFWwindow* GetNativeWindow() const { return window; }
 	};

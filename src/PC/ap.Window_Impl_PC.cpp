@@ -60,6 +60,7 @@ namespace ap
 		else
 		{
 			glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+			isOpenGLMode = false;
 		}
 
 		glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
@@ -132,6 +133,30 @@ namespace ap
 	void Window_Impl_PC::Close()
 	{
 		glfwSetWindowShouldClose(window, 1);
+	}
+
+	void Window_Impl_PC::Present()
+	{
+		if (isOpenGLMode)
+		{
+			glfwSwapBuffers(window);
+		}
+	}
+
+	void Window_Impl_PC::MakeContextCurrent()
+	{
+		if (isOpenGLMode)
+		{
+			glfwMakeContextCurrent(window);
+		}
+	}
+
+	void Window_Impl_PC::MakeContextNone()
+	{
+		if (isOpenGLMode)
+		{
+			glfwMakeContextCurrent(nullptr);
+		}
 	}
 
 	void* Window_Impl_PC::GetHandle() const
