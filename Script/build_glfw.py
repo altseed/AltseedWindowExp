@@ -4,11 +4,19 @@ pathname = 'glfw'
 
 aceutils.cdToScript()
 aceutils.mkdir('../Downloads')
+aceutils.mkdir('../Downloads/temp')
 
 aceutils.mkdir(r"../include/")
 aceutils.mkdir(r"../lib/")
 
-with aceutils.CurrentDir('../Downloads'):
+with aceutils.CurrentDir('../Downloads/temp'):
+
+	# Copy from submodule
+	aceutils.copytree('../glfw/','./glfw/')
+	aceutils.rm('./glfw/.git')
+	aceutils.rmdir('./glfw/.github/')
+
+	# Compile
 	aceutils.rmdir(r"glfw_bin")
 	aceutils.rmdir(r"glfw_bin_x64")
 
@@ -34,29 +42,29 @@ with aceutils.CurrentDir('../Downloads'):
 			aceutils.call(aceutils.cmd_compile + r'ALL_BUILD.vcxproj /p:configuration=Debug')
 			aceutils.call(aceutils.cmd_compile + r'ALL_BUILD.vcxproj /p:configuration=Release')
 	
-	aceutils.mkdir(r"../include/GLFW/")
+	aceutils.mkdir(r"../../include/GLFW/")
 
 	if aceutils.isWin():
 
-		aceutils.mkdir(r'../lib/x86/')
-		aceutils.mkdir(r'../lib/x86/Debug')
-		aceutils.mkdir(r'../lib/x86/Release')
+		aceutils.mkdir(r'../../lib/x86/')
+		aceutils.mkdir(r'../../lib/x86/Debug')
+		aceutils.mkdir(r'../../lib/x86/Release')
 
-		aceutils.mkdir(r'../lib/x64/')
-		aceutils.mkdir(r'../lib/x64/Debug')
-		aceutils.mkdir(r'../lib/x64/Release')
+		aceutils.mkdir(r'../../lib/x64/')
+		aceutils.mkdir(r'../../lib/x64/Debug')
+		aceutils.mkdir(r'../../lib/x64/Release')
 
-		aceutils.copy(pathname + r'/include/GLFW/glfw3.h', r'../include/GLFW/')
-		aceutils.copy(pathname + r'/include/GLFW/glfw3native.h', r'../include/GLFW')
+		aceutils.copy(pathname + r'/include/GLFW/glfw3.h', r'../../include/GLFW/')
+		aceutils.copy(pathname + r'/include/GLFW/glfw3native.h', r'../../include/GLFW')
 
-		aceutils.copy(r'glfw_bin/src/Debug/glfw3.lib', r'../lib/x86/Debug/')
-		aceutils.copy(r'glfw_bin/src/Release/glfw3.lib', r'../lib/x86/Release/')
+		aceutils.copy(r'glfw_bin/src/Debug/glfw3.lib', r'../../lib/x86/Debug/')
+		aceutils.copy(r'glfw_bin/src/Release/glfw3.lib', r'../../lib/x86/Release/')
 
-		aceutils.copy(r'glfw_bin_x64/src/Debug/glfw3.lib', r'../lib/x64/Debug/')
-		aceutils.copy(r'glfw_bin_x64/src/Release/glfw3.lib', r'../lib/x64/Release/')
+		aceutils.copy(r'glfw_bin_x64/src/Debug/glfw3.lib', r'../../lib/x64/Debug/')
+		aceutils.copy(r'glfw_bin_x64/src/Release/glfw3.lib', r'../../lib/x64/Release/')
 
 	else:
-		aceutils.copy(pathname + r'/include/GLFW/glfw3.h', r'../include/GLFW/')
-		aceutils.copy(pathname + r'/include/GLFW/glfw3native.h', r'../include/GLFW')
+		aceutils.copy(pathname + r'/include/GLFW/glfw3.h', r'../../include/GLFW/')
+		aceutils.copy(pathname + r'/include/GLFW/glfw3native.h', r'../../include/GLFW')
 
-		aceutils.copy(r'glfw_bin/src/libglfw3.a', r'../lib')
+		aceutils.copy(r'glfw_bin/src/libglfw3.a', r'../../lib')
