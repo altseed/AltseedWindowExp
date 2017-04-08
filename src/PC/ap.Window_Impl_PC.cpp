@@ -137,7 +137,7 @@ namespace ap
 
 	void Window_Impl_PC::Present()
 	{
-		if (isOpenGLMode)
+		if (isOpenGLMode && window != nullptr)
 		{
 			glfwSwapBuffers(window);
 		}
@@ -145,7 +145,7 @@ namespace ap
 
 	void Window_Impl_PC::MakeContextCurrent()
 	{
-		if (isOpenGLMode)
+		if (isOpenGLMode && window != nullptr)
 		{
 			glfwMakeContextCurrent(window);
 		}
@@ -153,7 +153,7 @@ namespace ap
 
 	void Window_Impl_PC::MakeContextNone()
 	{
-		if (isOpenGLMode)
+		if (isOpenGLMode && window != nullptr)
 		{
 			glfwMakeContextCurrent(nullptr);
 		}
