@@ -9,7 +9,7 @@ namespace ap
 Joystick_Impl_PC::Joystick_Impl_PC(Window* window)
 {
 	isPresent.fill(false);
-	types.fill(JoystickType::Other);
+	types.fill(JoystickType::PSVITA);
 	buttonCount.fill(0);
 	axisCount.fill(0);
 
@@ -92,7 +92,7 @@ InputState Joystick_Impl_PC::GetButtonState(int32_t joystickIndex, int32_t butto
 InputState Joystick_Impl_PC::GetButtonState(int32_t joystickIndex, JoystickButtonType type) const
 {
 	auto jtype = GetJoystickType(joystickIndex);
-	if (jtype == JoystickType::Other) return InputState::Free;
+	if (jtype == JoystickType::PSVITA) return InputState::Free;
 
 	if (jtype == JoystickType::PS4)
 	{
@@ -130,7 +130,7 @@ float Joystick_Impl_PC::GetAxisState(int32_t joystickIndex, int32_t axisIndex) c
 float Joystick_Impl_PC::GetAxisState(int32_t joystickIndex, JoystickAxisType type) const
 {
 	auto jtype = GetJoystickType(joystickIndex);
-	if (jtype == JoystickType::Other) return 0;
+	if (jtype == JoystickType::PSVITA) return 0;
 
 	if (jtype == JoystickType::PS4)
 	{

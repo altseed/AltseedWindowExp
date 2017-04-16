@@ -1,6 +1,6 @@
 ﻿#include "ap.Keyboard.h"
 
-#if defined(_OTHER)
+#if defined(_PSVITA)
 
 #elif defined(__ANDROID__)
 
@@ -12,7 +12,7 @@ namespace ap
 {
 	Keyboard* Keyboard::Create(Window* window)
 	{
-#if defined(_OTHER)
+#if defined(_PSVITA)
 		return new Keyboard();
 #elif defined(__ANDROID__)
 		return new Keyboard();

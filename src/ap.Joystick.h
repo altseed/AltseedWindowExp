@@ -23,7 +23,7 @@ public:
 
 	virtual float GetAxisState(int32_t joystickIndex, JoystickAxisType type) const { return 0; }
 
-	virtual JoystickType GetJoystickType(int32_t joystickIndex) const { return JoystickType::Other; }
+	virtual JoystickType GetJoystickType(int32_t joystickIndex) const { return JoystickType::PSVITA; }
 
 	virtual int32_t GetButtonCount(int32_t joystickIndex) const { return 0; }
 

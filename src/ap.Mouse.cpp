@@ -1,6 +1,6 @@
 ﻿#include "ap.Mouse.h"
 
-#if defined(_OTHER)
+#if defined(_PSVITA)
 
 #elif defined(__ANDROID__)
 
@@ -12,7 +12,7 @@ namespace ap
 {
 	Mouse* Mouse::Create(Window* window)
 	{
-#if defined(_OTHER)
+#if defined(_PSVITA)
 		return new Mouse();
 #elif defined(__ANDROID__)
 		return new Mouse();

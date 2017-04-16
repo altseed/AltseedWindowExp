@@ -3,7 +3,13 @@
 
 #include <AltseedPlatform.h>
 
-#if defined(_OTHER)
+#if defined(_PSVITA)
+
+#elif defined(_PS4)
+
+#elif defined(_SWITCH)
+
+#elif defined(_XBOXONE)
 
 #else
 

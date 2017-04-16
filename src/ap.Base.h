@@ -7,7 +7,7 @@
 #include <stdint.h>
 #include <array>
 
-#if defined(_OTHER)
+#if defined(_PSVITA)
 
 #elif defined(__ANDROID__)
 
@@ -240,7 +240,7 @@ namespace ap
 
 	enum class JoystickType : int32_t
 	{
-		Other,
+		PSVITA,
 		PS4,
 	};
 
