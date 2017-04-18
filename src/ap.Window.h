@@ -22,6 +22,13 @@ public:
 	virtual void SetSize(int32_t width, int32_t height) {}
 
 	/**
+	@brief	Get the size of frame buffer.
+	@note
+	This function is for OpenGL
+	*/
+	virtual void GetFrameBufferSize(int32_t& width, int32_t& height) {}
+
+	/**
 	@brief	Get native window pointer.
 	@return	native window pointer
 	@note

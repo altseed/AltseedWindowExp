@@ -70,6 +70,26 @@ void Joystick_Impl_PC::RefreshInputState()
 	}
 }
 
+void Joystick_Impl_PC::RefreshConnectedState()
+{
+	for (int i = 0; i < MAX_JOYSTICKS_NUM; i++)
+	{
+		isPresent[i] = glfwJoystickPresent(i) == GLFW_TRUE;
+
+		if (!isPresent[i]) continue;
+
+		// Recognize joystick
+		auto name = glfwGetJoystickName(i);
+
+		int32_t buttonsCount = 0;
+		auto btns = glfwGetJoystickButtons(i, &buttonsCount);
+
+		if (strcmp(name, "Wireless Controller") == 0 && buttonsCount == 18)
+		{
+			types[i] = JoystickType::PS4;
+		}
+	}
+}
 
 bool Joystick_Impl_PC::IsPresent(int32_t joystickIndex)
 {

@@ -148,6 +148,18 @@ namespace ap
 		glfwSetWindowSize(window, width, height);
 	}
 
+	void Window_Impl_PC::GetFrameBufferSize(int32_t& width, int32_t& height)
+	{
+		if (isOpenGLMode)
+		{
+			glfwGetFramebufferSize(window, &width, &height);
+		}
+		else
+		{
+			glfwGetWindowSize(window, &width, &height);
+		}
+	}	
+
 	void Window_Impl_PC::Present()
 	{
 		if (isOpenGLMode && window != nullptr)

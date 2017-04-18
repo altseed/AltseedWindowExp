@@ -29,6 +29,8 @@ namespace ap
 
 		void SetSize(int32_t width, int32_t height) override;
 
+		void GetFrameBufferSize(int32_t& width, int32_t& height) override;
+
 		void* GetHandle() const override;
 
 		void Present() override;

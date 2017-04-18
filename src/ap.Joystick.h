@@ -13,6 +13,8 @@ public:
 
 	virtual void RefreshInputState() {}
 
+	virtual void RefreshConnectedState() {}
+
 	virtual bool IsPresent(int32_t joystickIndex) { return false; }
 
 	virtual InputState GetButtonState(int32_t joystickIndex, int32_t buttonIndex) const { return InputState::Free; }

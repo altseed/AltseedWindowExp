@@ -32,6 +32,8 @@ namespace ap
 
 		void RefreshInputState() override;
 
+		void RefreshConnectedState() override;
+
 		bool IsPresent(int32_t joystickIndex) override;
 
 		InputState GetButtonState(int32_t joystickIndex, int32_t buttonIndex) const override;

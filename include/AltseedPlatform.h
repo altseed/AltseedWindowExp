@@ -324,6 +324,8 @@ public:
 
 	virtual void RefreshInputState() {}
 
+	virtual void RefreshConnectedState() {}
+
 	virtual bool IsPresent(int32_t joystickIndex) { return false; }
 
 	virtual InputState GetButtonState(int32_t joystickIndex, int32_t buttonIndex) const { return InputState::Free; }
@@ -426,6 +428,13 @@ public:
 	virtual void SetTitle(const char16_t* title) {}
 
 	virtual void SetSize(int32_t width, int32_t height) {}
+
+	/**
+	@brief	Get the size of frame buffer.
+	@note
+	This function is for OpenGL
+	*/
+	virtual void GetFrameBufferSize(int32_t& width, int32_t& height) {}
 
 	/**
 	@brief	Get native window pointer.
