@@ -11,6 +11,8 @@ public:
 	Mouse() {}
 	virtual ~Mouse() {}
 
+	virtual void RefreshInputState() {}
+
 	virtual void GetPosition(float& x, float& y) const {}
 
 	virtual void SetPosition(float x, float y) {}

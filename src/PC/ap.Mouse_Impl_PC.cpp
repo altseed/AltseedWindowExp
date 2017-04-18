@@ -17,7 +17,9 @@ Mouse_Impl_PC::Mouse_Impl_PC(Window* window)
 	: window(window)
 {
 	auto w = (Window_Impl_PC*)window;
-	glfwSetScrollCallback(w->GetNativeWindow(), GetWheelInternal);
+	auto w_ = (GLFWwindow*)window->GetNativeWindow();
+
+	glfwSetScrollCallback(w_, GetWheelInternal);
 }
 
 Mouse_Impl_PC::~Mouse_Impl_PC()
@@ -28,9 +30,10 @@ Mouse_Impl_PC::~Mouse_Impl_PC()
 void Mouse_Impl_PC::RefreshInputState()
 {
 	auto w = (Window_Impl_PC*)window;
+	auto w_ = (GLFWwindow*)window->GetNativeWindow();
 
 	double mx, my;
-	glfwGetCursorPos(w->GetNativeWindow(), &mx, &my);
+	glfwGetCursorPos(w_, &mx, &my);
 	posX = mx;
 	posY = my;
 
@@ -41,7 +44,7 @@ void Mouse_Impl_PC::RefreshInputState()
 
 	for (int32_t i = 0; i < KEY_NUM; i++)
 	{
-		currentHit[i] = (bool)glfwGetMouseButton(w->GetNativeWindow(), i);
+		currentHit[i] = (bool)glfwGetMouseButton(w_, i);
 	}
 }
 
@@ -54,11 +57,12 @@ void Mouse_Impl_PC::GetPosition(float& x, float& y) const
 void Mouse_Impl_PC::SetPosition(float x, float y)
 {
 	auto w = (Window_Impl_PC*)window;
+	auto w_ = (GLFWwindow*)window->GetNativeWindow();
 
 	posX = x;
 	posY = y;
 
-	glfwSetCursorPos(w->GetNativeWindow(), x, y);
+	glfwSetCursorPos(w_, x, y);
 }
 
 float Mouse_Impl_PC::GetWheel() const

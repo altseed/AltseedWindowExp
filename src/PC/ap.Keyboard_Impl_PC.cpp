@@ -146,12 +146,13 @@ Keyboard_Impl_PC::~Keyboard_Impl_PC()
 void Keyboard_Impl_PC::RefreshInputState()
 {
 	auto w = (Window_Impl_PC*)window;
+	auto w_ = (GLFWwindow*)window->GetNativeWindow();
 
 	preHit = currentHit;
 
 	for (int32_t i = 0; i < KEY_NUM; i++) 
 	{
-		currentHit[i] = (bool)glfwGetKey(w->GetNativeWindow(), keyCodes[i]);
+		currentHit[i] = (bool)glfwGetKey(w_, keyCodes[i]);
 	}
 }
 

@@ -24,7 +24,7 @@ namespace ap
 		Mouse_Impl_PC(Window* window);
 		virtual ~Mouse_Impl_PC();
 
-		void RefreshInputState();
+		void RefreshInputState() override;
 
 		void GetPosition(float& x, float& y) const override;
 

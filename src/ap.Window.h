@@ -17,6 +17,24 @@ public:
 
 	virtual void Close() {}
 
+	virtual void SetTitle(const char16_t* title) {}
+
+	virtual void SetSize(int32_t width, int32_t height) {}
+
+	/**
+	@brief	Get native window pointer.
+	@return	native window pointer
+	@note
+	PC - GLFWwindow*
+	*/
+	virtual void* GetNativeWindow() const { return nullptr; }
+
+	/**
+		@brief	Get native window handle.
+		@return	native window handle
+		@note
+		Windows - HWND
+	*/
 	virtual void* GetHandle() const { return nullptr; }
 
 	/**

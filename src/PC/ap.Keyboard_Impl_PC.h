@@ -20,7 +20,7 @@ public:
 	Keyboard_Impl_PC(Window* window);
 	virtual ~Keyboard_Impl_PC();
 
-	void RefreshInputState();
+	void RefreshInputState() override;
 
 	InputState GetKeyState(Keys key) const override;
 };

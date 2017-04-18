@@ -113,6 +113,8 @@ namespace ap
 
 		glfwShowWindow(window);
 
+		glfwSwapInterval(0);
+
 		return ErrorCode::OK;
 	}
 
@@ -133,6 +135,17 @@ namespace ap
 	void Window_Impl_PC::Close()
 	{
 		glfwSetWindowShouldClose(window, 1);
+	}
+
+	void Window_Impl_PC::SetTitle(const char16_t* title)
+	{
+		auto titleUTF8 = utf16_to_utf8(title);
+		glfwSetWindowTitle(window, titleUTF8.c_str());
+	}
+
+	void Window_Impl_PC::SetSize(int32_t width, int32_t height)
+	{
+		glfwSetWindowSize(window, width, height);
 	}
 
 	void Window_Impl_PC::Present()

@@ -355,6 +355,8 @@ public:
 	Keyboard() {}
 	virtual ~Keyboard() {}
 
+	virtual void RefreshInputState() {}
+
 	virtual InputState GetKeyState(Keys key) const { return InputState::Free; }
 
 	static Keyboard* Create(Window* window);
@@ -371,6 +373,8 @@ class Mouse
 public:
 	Mouse() {}
 	virtual ~Mouse() {}
+
+	virtual void RefreshInputState() {}
 
 	virtual void GetPosition(float& x, float& y) const {}
 
@@ -419,6 +423,24 @@ public:
 
 	virtual void Close() {}
 
+	virtual void SetTitle(const char16_t* title) {}
+
+	virtual void SetSize(int32_t width, int32_t height) {}
+
+	/**
+	@brief	Get native window pointer.
+	@return	native window pointer
+	@note
+	PC - GLFWwindow*
+	*/
+	virtual void* GetNativeWindow() const { return nullptr; }
+
+	/**
+		@brief	Get native window handle.
+		@return	native window handle
+		@note
+		Windows - HWND
+	*/
 	virtual void* GetHandle() const { return nullptr; }
 
 	/**

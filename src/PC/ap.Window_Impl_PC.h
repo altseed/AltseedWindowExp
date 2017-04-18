@@ -25,6 +25,10 @@ namespace ap
 
 		void Close() override;
 
+		void SetTitle(const char16_t* title) override;
+
+		void SetSize(int32_t width, int32_t height) override;
+
 		void* GetHandle() const override;
 
 		void Present() override;
@@ -33,7 +37,7 @@ namespace ap
 
 		void MakeContextNone() override;
 
-		GLFWwindow* GetNativeWindow() const { return window; }
+		void* GetNativeWindow() const override { return window; }
 	};
 
 }
