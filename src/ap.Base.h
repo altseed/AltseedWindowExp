@@ -240,7 +240,7 @@ namespace ap
 
 	enum class JoystickType : int32_t
 	{
-		PSVITA,
+		Other,
 		PS4,
 	};
 
@@ -249,15 +249,15 @@ namespace ap
 		Start,
 		Select,
 		
-		Up,
-		Down,
-		Left,
-		Right,
+		LeftUp,
+		LeftDown,
+		LeftLeft,
+		LeftRight,
 
-		Triangle,
-		Circle,
-		Square,
-		Cross,
+		RightUp,	///< PSx Triangle
+		RightRight,	///< PSx Circle
+		RightLeft,	///< PSx Square
+		RightDown,	///< PSx Cross
 
 		L1,
 		R1,

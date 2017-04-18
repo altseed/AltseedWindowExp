@@ -6,7 +6,7 @@
 #include <stdint.h>
 #include <array>
 
-#if defined(_OTHER)
+#if defined(_PSVITA)
 
 #elif defined(__ANDROID__)
 
@@ -248,15 +248,15 @@ namespace ap
 		Start,
 		Select,
 		
-		Up,
-		Down,
-		Left,
-		Right,
+		LeftUp,
+		LeftDown,
+		LeftLeft,
+		LeftRight,
 
-		Triangle,
-		Circle,
-		Square,
-		Cross,
+		RightUp,	///< PSx Triangle
+		RightRight,	///< PSx Circle
+		RightLeft,	///< PSx Square
+		RightDown,	///< PSx Cross
 
 		L1,
 		R1,

@@ -9,7 +9,7 @@ namespace ap
 Joystick_Impl_PC::Joystick_Impl_PC(Window* window)
 {
 	isPresent.fill(false);
-	types.fill(JoystickType::PSVITA);
+	types.fill(JoystickType::Other);
 	buttonCount.fill(0);
 	axisCount.fill(0);
 
@@ -92,27 +92,27 @@ InputState Joystick_Impl_PC::GetButtonState(int32_t joystickIndex, int32_t butto
 InputState Joystick_Impl_PC::GetButtonState(int32_t joystickIndex, JoystickButtonType type) const
 {
 	auto jtype = GetJoystickType(joystickIndex);
-	if (jtype == JoystickType::PSVITA) return InputState::Free;
+	if (jtype == JoystickType::Other) return InputState::Free;
 
 	if (jtype == JoystickType::PS4)
 	{
 		std::array<int, (int32_t)JoystickButtonType::Max> maps;
 		maps.fill(-1);
 
-		maps[(int32_t)JoystickButtonType::Square] = 0;
-		maps[(int32_t)JoystickButtonType::Cross] = 1;
-		maps[(int32_t)JoystickButtonType::Circle] = 2;
-		maps[(int32_t)JoystickButtonType::Triangle] = 3;
+		maps[(int32_t)JoystickButtonType::RightLeft] = 0;
+		maps[(int32_t)JoystickButtonType::RightDown] = 1;
+		maps[(int32_t)JoystickButtonType::RightRight] = 2;
+		maps[(int32_t)JoystickButtonType::RightUp] = 3;
 
 		maps[(int32_t)JoystickButtonType::L1] = 4;
 		maps[(int32_t)JoystickButtonType::R1] = 5;
 		maps[(int32_t)JoystickButtonType::L2] = 6;
 		maps[(int32_t)JoystickButtonType::R2] = 7;
 
-		maps[(int32_t)JoystickButtonType::Up] = 14;
-		maps[(int32_t)JoystickButtonType::Right] = 15;
-		maps[(int32_t)JoystickButtonType::Down] = 16;
-		maps[(int32_t)JoystickButtonType::Left] = 17;
+		maps[(int32_t)JoystickButtonType::LeftUp] = 14;
+		maps[(int32_t)JoystickButtonType::LeftRight] = 15;
+		maps[(int32_t)JoystickButtonType::LeftDown] = 16;
+		maps[(int32_t)JoystickButtonType::LeftLeft] = 17;
 
 		return GetButtonState(joystickIndex, maps[(int32_t)type]);
 	}
@@ -130,7 +130,7 @@ float Joystick_Impl_PC::GetAxisState(int32_t joystickIndex, int32_t axisIndex) c
 float Joystick_Impl_PC::GetAxisState(int32_t joystickIndex, JoystickAxisType type) const
 {
 	auto jtype = GetJoystickType(joystickIndex);
-	if (jtype == JoystickType::PSVITA) return 0;
+	if (jtype == JoystickType::Other) return 0;
 
 	if (jtype == JoystickType::PS4)
 	{
