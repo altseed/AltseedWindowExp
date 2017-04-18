@@ -183,10 +183,13 @@ $RECYCLE.BIN/
 # Mac crap
 .DS_Store
 
-# For this projects
+# User defined
 *.exe.config
 *.manifest
 *.pyc
 *.ch
 
 Temp/
+Intermediate/
+
+include/GLFW/
