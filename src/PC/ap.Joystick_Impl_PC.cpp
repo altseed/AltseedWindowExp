@@ -2,17 +2,34 @@
 #include "ap.Joystick_Impl_PC.h"
 
 #include <string.h>
+#include <codecvt>
 
 namespace ap
 {
 
+// http://hasenpfote36.blogspot.jp/2016/09/stdcodecvt.html
+static constexpr std::codecvt_mode mode = std::codecvt_mode::little_endian;
+
+static std::u16string utf8_to_utf16(const std::string& s)
+{
+#if defined(_MSC_VER) && (_MSC_VER <= 1900)
+	std::wstring_convert<std::codecvt_utf8_utf16<std::uint16_t, 0x10ffff, mode>, std::uint16_t> conv;
+	auto temp = conv.from_bytes(s);
+	return std::u16string(temp.cbegin(), temp.cend());
+#else
+	std::wstring_convert<std::codecvt_utf8_utf16<char16_t, 0x10ffff, mode>, char16_t> conv;
+	return conv.from_bytes(s);
+#endif
+}
+
 Joystick_Impl_PC::Joystick_Impl_PC(Window* window)
 {
 	isPresent.fill(false);
+	names.fill(u"");
 	types.fill(JoystickType::Other);
 	buttonCount.fill(0);
 	axisCount.fill(0);
-
+	
 	for (int32_t i = 0; i < MAX_JOYSTICKS_NUM; i++)
 	{
 		currentHit[i].fill(false);
@@ -20,23 +37,7 @@ Joystick_Impl_PC::Joystick_Impl_PC(Window* window)
 		currentAxis[i].fill(0);
 	}
 
-	for (int i = 0; i < MAX_JOYSTICKS_NUM; i++)
-	{
-		isPresent[i] = glfwJoystickPresent(i) == GLFW_TRUE;
-
-		if (!isPresent[i]) continue;
-
-		// Recognize joystick
-		auto name = glfwGetJoystickName(i);
-
-		int32_t buttonsCount = 0;
-		auto btns = glfwGetJoystickButtons(i, &buttonsCount);
-
-		if (strcmp(name, "Wireless Controller") == 0 && buttonsCount == 18)
-		{
-			types[i] = JoystickType::PS4;
-		}
-	}
+	RefreshConnectedState();
 }
 
 Joystick_Impl_PC::~Joystick_Impl_PC()
@@ -81,6 +82,8 @@ void Joystick_Impl_PC::RefreshConnectedState()
 		// Recognize joystick
 		auto name = glfwGetJoystickName(i);
 
+		names[i] = utf8_to_utf16(name);
+
 		int32_t buttonsCount = 0;
 		auto btns = glfwGetJoystickButtons(i, &buttonsCount);
 
@@ -88,6 +91,14 @@ void Joystick_Impl_PC::RefreshConnectedState()
 		{
 			types[i] = JoystickType::PS4;
 		}
+		else if (strcmp(name, "Xbox 360 Controller") == 0 && buttonsCount == 14)
+		{
+			types[i] = JoystickType::XBOX360;
+		}
+		//else if (strcmp(name, "Controller") == 0 && buttonsCount == 15)
+		//{
+		//	types[i] = JoystickType::XBOX;
+		//}
 	}
 }
 
@@ -97,6 +108,11 @@ bool Joystick_Impl_PC::IsPresent(int32_t joystickIndex)
 	if (joystickIndex >= MAX_JOYSTICKS_NUM) return false;
 
 	return isPresent[joystickIndex];
+}
+
+const char16_t* Joystick_Impl_PC::GetName(int32_t joystickIndex) const
+{
+	return names[joystickIndex].c_str();
 }
 
 InputState Joystick_Impl_PC::GetButtonState(int32_t joystickIndex, int32_t buttonIndex) const
@@ -137,6 +153,27 @@ InputState Joystick_Impl_PC::GetButtonState(int32_t joystickIndex, JoystickButto
 		return GetButtonState(joystickIndex, maps[(int32_t)type]);
 	}
 
+	if (jtype == JoystickType::XBOX360)
+	{
+		std::array<int, (int32_t)JoystickButtonType::Max> maps;
+		maps.fill(-1);
+
+		maps[(int32_t)JoystickButtonType::RightLeft] = 2;
+		maps[(int32_t)JoystickButtonType::RightDown] = 0;
+		maps[(int32_t)JoystickButtonType::RightRight] = 1;
+		maps[(int32_t)JoystickButtonType::RightUp] = 3;
+
+		maps[(int32_t)JoystickButtonType::L1] = 4;
+		maps[(int32_t)JoystickButtonType::R1] = 5;
+		
+		maps[(int32_t)JoystickButtonType::LeftUp] = 10;
+		maps[(int32_t)JoystickButtonType::LeftRight] = 11;
+		maps[(int32_t)JoystickButtonType::LeftDown] = 12;
+		maps[(int32_t)JoystickButtonType::LeftLeft] = 13;
+
+		return GetButtonState(joystickIndex, maps[(int32_t)type]);
+	}
+
 	return InputState::Free;
 }
 
@@ -167,6 +204,29 @@ float Joystick_Impl_PC::GetAxisState(int32_t joystickIndex, JoystickAxisType typ
 
 		return GetAxisState(joystickIndex, maps[(int32_t)type]);
 	}
+
+	if (jtype == JoystickType::XBOX360)
+	{
+		std::array<int, (int32_t)JoystickAxisType::Max> maps;
+		maps.fill(-1);
+
+		maps[(int32_t)JoystickAxisType::LeftH] = 0;
+		maps[(int32_t)JoystickAxisType::LeftV] = 1;
+		maps[(int32_t)JoystickAxisType::RightH] = 2;
+		maps[(int32_t)JoystickAxisType::RightV] = 3;
+
+		maps[(int32_t)JoystickAxisType::L2] = 4;
+		maps[(int32_t)JoystickAxisType::R2] = 5;
+
+		if ((int32_t)type == 1 || (int32_t)type == 3)
+		{
+			return -GetAxisState(joystickIndex, maps[(int32_t)type]);
+		}
+
+		return GetAxisState(joystickIndex, maps[(int32_t)type]);
+	}
+
+
 
 	return 0.0f;
 }

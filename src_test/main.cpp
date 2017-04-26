@@ -53,7 +53,7 @@ int main()
 
 		if (joystick->IsPresent(0))
 		{
-			if (joystick->GetJoystickType(0) == ap::JoystickType::PS4)
+			if (joystick->GetJoystickType(0) != ap::JoystickType::Other)
 			{
 				if (joystick->GetButtonState(0, ap::JoystickButtonType::RightRight) == ap::InputState::Push) printf("Push : Circle\n");
 				if (joystick->GetButtonState(0, ap::JoystickButtonType::RightDown) == ap::InputState::Push) printf("Push : Cross\n");

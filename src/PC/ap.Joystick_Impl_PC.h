@@ -16,8 +16,9 @@ namespace ap
 		Window*		window = nullptr;
 
 		std::array<bool, MAX_JOYSTICKS_NUM>				isPresent;
-		std::array<JoystickType, MAX_JOYSTICKS_NUM>		types;
 
+		std::array<std::u16string, MAX_JOYSTICKS_NUM>	names;
+		std::array<JoystickType, MAX_JOYSTICKS_NUM>		types;
 		std::array<int32_t, MAX_JOYSTICKS_NUM>			buttonCount;
 		std::array<int32_t, MAX_JOYSTICKS_NUM>			axisCount;
 
@@ -35,6 +36,8 @@ namespace ap
 		void RefreshConnectedState() override;
 
 		bool IsPresent(int32_t joystickIndex) override;
+
+		const char16_t* GetName(int32_t joystickIndex) const override;
 
 		InputState GetButtonState(int32_t joystickIndex, int32_t buttonIndex) const override;
 

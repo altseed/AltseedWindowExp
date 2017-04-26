@@ -241,6 +241,7 @@ namespace ap
 	{
 		Other,
 		PS4,
+		XBOX360,
 	};
 
 	enum class JoystickButtonType : int32_t
@@ -318,6 +319,9 @@ namespace ap
 
 class Joystick
 {
+private:
+	std::u16string emptyStr;
+
 public:
 	Joystick() {}
 	virtual ~Joystick() {}
@@ -327,6 +331,8 @@ public:
 	virtual void RefreshConnectedState() {}
 
 	virtual bool IsPresent(int32_t joystickIndex) { return false; }
+
+	virtual const char16_t* GetName(int32_t joystickIndex) const { return emptyStr.c_str(); }
 
 	virtual InputState GetButtonState(int32_t joystickIndex, int32_t buttonIndex) const { return InputState::Free; }
 

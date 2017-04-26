@@ -242,6 +242,7 @@ namespace ap
 	{
 		Other,
 		PS4,
+		XBOX360,
 	};
 
 	enum class JoystickButtonType : int32_t
