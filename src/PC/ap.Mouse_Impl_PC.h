@@ -15,9 +15,6 @@ namespace ap
 
 		std::array<bool, KEY_NUM>	currentHit;
 		std::array<bool, KEY_NUM>	preHit;
-
-		float	posX = 0;
-		float	posY = 0;
 		float	wheel = 0;
 
 	public:
@@ -25,8 +22,6 @@ namespace ap
 		virtual ~Mouse_Impl_PC();
 
 		void RefreshInputState() override;
-
-		void GetPosition(float& x, float& y) const override;
 
 		void SetPosition(float x, float y) override;
 

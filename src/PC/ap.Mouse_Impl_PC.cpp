@@ -48,21 +48,13 @@ void Mouse_Impl_PC::RefreshInputState()
 	}
 }
 
-void Mouse_Impl_PC::GetPosition(float& x, float& y) const
-{
-	x = posX;
-	y = posY;
-}
-
 void Mouse_Impl_PC::SetPosition(float x, float y)
 {
 	auto w = (Window_Impl_PC*)window;
 	auto w_ = (GLFWwindow*)window->GetNativeWindow();
-
-	posX = x;
-	posY = y;
-
 	glfwSetCursorPos(w_, x, y);
+
+	Mouse::SetPosition(x, y);
 }
 
 float Mouse_Impl_PC::GetWheel() const

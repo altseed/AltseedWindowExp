@@ -7,15 +7,27 @@ namespace ap
 
 class Mouse
 {
+protected:
+	float	posX = 0;
+	float	posY = 0;
+
 public:
 	Mouse() {}
 	virtual ~Mouse() {}
 
 	virtual void RefreshInputState() {}
 
-	virtual void GetPosition(float& x, float& y) const {}
+	virtual void GetPosition(float& x, float& y) const
+	{
+		x = posX;
+		y = posY;
+	}
 
-	virtual void SetPosition(float x, float y) {}
+	virtual void SetPosition(float x, float y)
+	{
+		posX = x;
+		posY = y;
+	}
 
 	virtual float GetWheel() const { return 0; }
 
