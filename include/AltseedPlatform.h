@@ -264,6 +264,9 @@ namespace ap
 		L2,
 		R2,
 
+		LeftStart,	///< XBOX360 Start
+		RightStart,
+
 		Max,
 	};
 

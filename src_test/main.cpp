@@ -70,6 +70,9 @@ int main()
 				if (joystick->GetButtonState(0, ap::JoystickButtonType::LeftLeft) == ap::InputState::Push) printf("Push : Left\n");
 				if (joystick->GetButtonState(0, ap::JoystickButtonType::LeftRight) == ap::InputState::Push) printf("Push : Right\n");
 
+				if (joystick->GetButtonState(0, ap::JoystickButtonType::LeftStart) == ap::InputState::Push) printf("Push : LeftStart\n");
+				if (joystick->GetButtonState(0, ap::JoystickButtonType::RightStart) == ap::InputState::Push) printf("Push : RightStart\n");
+
 				auto leftH = joystick->GetAxisState(0, ap::JoystickAxisType::LeftH);
 				auto leftV = joystick->GetAxisState(0, ap::JoystickAxisType::LeftV);
 				auto rightH = joystick->GetAxisState(0, ap::JoystickAxisType::RightH);
