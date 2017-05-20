@@ -144,13 +144,15 @@ InputState Joystick_Impl_PC::GetButtonState(int32_t joystickIndex, JoystickButto
 		maps[(int32_t)JoystickButtonType::R1] = 5;
 		maps[(int32_t)JoystickButtonType::L2] = 6;
 		maps[(int32_t)JoystickButtonType::R2] = 7;
+		maps[(int32_t)JoystickButtonType::L3] = 10;
+		maps[(int32_t)JoystickButtonType::R3] = 11;
 
 		maps[(int32_t)JoystickButtonType::LeftUp] = 14;
 		maps[(int32_t)JoystickButtonType::LeftRight] = 15;
 		maps[(int32_t)JoystickButtonType::LeftDown] = 16;
 		maps[(int32_t)JoystickButtonType::LeftLeft] = 17;
 
-		maps[(int32_t)JoystickButtonType::LeftStart] = 8;
+		maps[(int32_t)JoystickButtonType::LeftStart] = 13;
 		maps[(int32_t)JoystickButtonType::RightStart] = 9;
 
 		return GetButtonState(joystickIndex, maps[(int32_t)type]);
@@ -168,7 +170,12 @@ InputState Joystick_Impl_PC::GetButtonState(int32_t joystickIndex, JoystickButto
 
 		maps[(int32_t)JoystickButtonType::L1] = 4;
 		maps[(int32_t)JoystickButtonType::R1] = 5;
-		
+
+//		maps[(int32_t)JoystickButtonType::L2] = ;
+//		maps[(int32_t)JoystickButtonType::R2] = ;
+		maps[(int32_t)JoystickButtonType::L3] = 8;
+		maps[(int32_t)JoystickButtonType::R3] = 9;
+
 		maps[(int32_t)JoystickButtonType::LeftUp] = 10;
 		maps[(int32_t)JoystickButtonType::LeftRight] = 11;
 		maps[(int32_t)JoystickButtonType::LeftDown] = 12;

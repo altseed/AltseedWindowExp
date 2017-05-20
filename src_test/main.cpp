@@ -64,6 +64,8 @@ int main()
 				if (joystick->GetButtonState(0, ap::JoystickButtonType::R1) == ap::InputState::Push) printf("Push : R1\n");
 				if (joystick->GetButtonState(0, ap::JoystickButtonType::L2) == ap::InputState::Push) printf("Push : L2\n");
 				if (joystick->GetButtonState(0, ap::JoystickButtonType::R2) == ap::InputState::Push) printf("Push : R2\n");
+				if (joystick->GetButtonState(0, ap::JoystickButtonType::L3) == ap::InputState::Push) printf("Push : L3\n");
+				if (joystick->GetButtonState(0, ap::JoystickButtonType::R3) == ap::InputState::Push) printf("Push : R3\n");
 
 				if (joystick->GetButtonState(0, ap::JoystickButtonType::LeftUp) == ap::InputState::Push) printf("Push : Up\n");
 				if (joystick->GetButtonState(0, ap::JoystickButtonType::LeftDown) == ap::InputState::Push) printf("Push : Down\n");
@@ -86,8 +88,8 @@ int main()
 				if (std::abs(rightH) > 0.1f) printf("RightH : %f\n", rightH);
 				if (std::abs(rightV) > 0.1f) printf("RightV : %f\n", rightV);
 
-				if (l2 > 0.5f) printf("L2 : %f\n", l2);
-				if (r2 > 0.5f) printf("R2 : %f\n", r2);
+				//if (l2 > 0.5f) printf("L2 : %f\n", l2);
+				//if (r2 > 0.5f) printf("R2 : %f\n", r2);
 			}
 		}
 	}
