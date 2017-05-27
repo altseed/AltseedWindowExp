@@ -3,6 +3,7 @@
 
 #include <string.h>
 #include <codecvt>
+#include <locale>
 
 namespace ap
 {

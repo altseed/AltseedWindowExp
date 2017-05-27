@@ -47,7 +47,32 @@ if (MSVC)
 	endif()
 endif()
 
+set(common_lib)
+if(MSVC)
+	# do nothing
+else()
+	list(APPEND common_lib glfw3 )
+
+	if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+		# used in GLFW
+		find_library(COCOA_FRAMEWORK Cocoa)
+		find_library(COCOA_FRAMEWORK Cocoa)
+		find_library(IOKIT_FRAMEWORK IOKit)
+		find_library(CORE_FOUNDATION_FRAMEWORK CoreFoundation)
+		find_library(CORE_VIDEO_FRAMEWORK CoreVideo)
+		list(APPEND common_lib
+			${COCOA_FRAMEWORK}
+			${OPENGL_gl_LIBRARY}
+			${OPENGL_glu_LIBRARY}
+			${IOKIT_FRAMEWORK}
+			${CORE_FOUNDATION_FRAMEWORK}
+			${CORE_VIDEO_FRAMEWORK})
+	endif()
+endif()
+
 add_library(AltseedPlatform ${cpps} ${hs})
+
+target_link_libraries(AltseedPlatform ${common_lib}) 
 
 include_directories(../include/)
 
