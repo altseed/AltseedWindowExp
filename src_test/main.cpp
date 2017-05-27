@@ -1,5 +1,6 @@
 
 #include <stdio.h>
+#include <cmath>
 
 #include <AltseedPlatform.h>
 
