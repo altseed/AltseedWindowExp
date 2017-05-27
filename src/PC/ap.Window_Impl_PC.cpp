@@ -1,6 +1,7 @@
 ﻿#include "ap.Window_Impl_PC.h"
 
 #include <codecvt>
+#include <locale>
 
 namespace ap
 {
@@ -186,6 +187,10 @@ namespace ap
 
 	void* Window_Impl_PC::GetHandle() const
 	{
+#ifdef _WIN32
 		return glfwGetWin32Window(window);
+#else
+		return nullptr;
+#endif
 	}
 }
