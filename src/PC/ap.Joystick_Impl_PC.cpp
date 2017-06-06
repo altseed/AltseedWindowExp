@@ -13,7 +13,7 @@ static constexpr std::codecvt_mode mode = std::codecvt_mode::little_endian;
 
 static std::u16string utf8_to_utf16(const std::string& s)
 {
-#if defined(_MSC_VER) && (_MSC_VER <= 1900)
+#if defined(_MSC_VER) && (_MSC_VER <= 1950)
 	std::wstring_convert<std::codecvt_utf8_utf16<std::uint16_t, 0x10ffff, mode>, std::uint16_t> conv;
 	auto temp = conv.from_bytes(s);
 	return std::u16string(temp.cbegin(), temp.cend());
