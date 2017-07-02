@@ -12,7 +12,7 @@ aceutils.mkdir(r"../lib/")
 with aceutils.CurrentDir('../Temp'):
 
 	# Copy from submodule
-	aceutils.copytree('../Downloads/glfw/','./glfw/')
+	aceutils.copytree('../Downloads/glfw/','./glfw/', True)
 	aceutils.rm('./glfw/.git')
 	aceutils.rmdir('./glfw/.github/')
 
