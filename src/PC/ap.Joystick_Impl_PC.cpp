@@ -67,6 +67,14 @@ void Joystick_Impl_PC::RefreshInputState()
 			currentHit[jind][i] = (bool)btns[i];
 		}
 
+		auto jtype = GetJoystickType(jind);
+
+		if (jtype == JoystickType::XBOX360)
+		{
+			currentHit[jind][14] = currentAxis[jind][4] > 0.8;
+			currentHit[jind][15] = currentAxis[jind][5] > 0.8;
+		}
+
 		buttonCount[jind] = buttonsCount;
 		axisCount[jind] = axesCount;
 	}
@@ -172,8 +180,9 @@ InputState Joystick_Impl_PC::GetButtonState(int32_t joystickIndex, JoystickButto
 		maps[(int32_t)JoystickButtonType::L1] = 4;
 		maps[(int32_t)JoystickButtonType::R1] = 5;
 
-//		maps[(int32_t)JoystickButtonType::L2] = ;
-//		maps[(int32_t)JoystickButtonType::R2] = ;
+		maps[(int32_t)JoystickButtonType::L2] = 14;
+		maps[(int32_t)JoystickButtonType::R2] = 15;
+
 		maps[(int32_t)JoystickButtonType::L3] = 8;
 		maps[(int32_t)JoystickButtonType::R3] = 9;
 
