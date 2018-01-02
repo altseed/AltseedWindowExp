@@ -45,6 +45,11 @@ public:
 	virtual void* GetHandle() const { return nullptr; }
 
 	/**
+		@brief	Get primiary monitor size.
+	*/
+	virtual void GetMonitorSize(int32_t& width, int32_t& height) {}
+
+	/**
 		@brief	Show back buffer.
 		@note
 		This function is for OpenGL

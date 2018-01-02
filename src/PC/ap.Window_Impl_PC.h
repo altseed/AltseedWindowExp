@@ -33,6 +33,8 @@ namespace ap
 
 		void* GetHandle() const override;
 
+		void GetMonitorSize(int32_t& width, int32_t& height) override;
+
 		void Present() override;
 
 		void MakeContextCurrent() override;

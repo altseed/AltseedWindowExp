@@ -193,4 +193,21 @@ namespace ap
 		return nullptr;
 #endif
 	}
+
+	void Window_Impl_PC::GetMonitorSize(int32_t& width, int32_t& height)
+	{
+		auto monitor = glfwGetPrimaryMonitor();
+
+		if (monitor != nullptr)
+		{
+			
+			auto videomode = glfwGetVideoMode(monitor);
+
+			if (videomode != nullptr)
+			{
+				width = videomode->width;
+				height = videomode->height;
+			}
+		}
+	}
 }
