@@ -20,6 +20,16 @@ namespace ap
 #endif
 	}
 
+	void GLFLW_ResizeCallback(GLFWwindow* w, int x, int y)
+	{
+		auto w_ = (Window_Impl_PC*)glfwGetWindowUserPointer(w);
+
+		if (w_->changedSize != nullptr)
+		{
+			w_->changedSize();
+		}
+	}
+
 	void Window_Impl_PC::Terminate()
 	{
 		if (window != nullptr)
@@ -64,7 +74,7 @@ namespace ap
 			isOpenGLMode = false;
 		}
 
-		glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+		glfwWindowHint(GLFW_RESIZABLE, parameter.IsResizable ? GL_TRUE : GL_FALSE);
 
 		if (parameter.ColorSpace == ColorSpaceType::LinearSpace)
 		{
@@ -116,6 +126,9 @@ namespace ap
 
 		glfwSwapInterval(0);
 
+		glfwSetWindowUserPointer(window, this);
+		glfwSetFramebufferSizeCallback(window, GLFLW_ResizeCallback);
+
 		return ErrorCode::OK;
 	}
 
@@ -147,6 +160,11 @@ namespace ap
 	void Window_Impl_PC::SetSize(int32_t width, int32_t height)
 	{
 		glfwSetWindowSize(window, width, height);
+	}
+
+	void Window_Impl_PC::SetChangedSizeEvent(const std::function<void()>& f)
+	{
+		changedSize = f;
 	}
 
 	void Window_Impl_PC::GetFrameBufferSize(int32_t& width, int32_t& height)

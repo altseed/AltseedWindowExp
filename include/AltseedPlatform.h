@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <array>
+#include <functional>
 
 #if defined(_PSVITA)
 
@@ -310,6 +311,7 @@ namespace ap
 		int32_t	WindowWidth = 0;
 		int32_t WindowHeight = 0;
 		bool	IsFullscreenMode = false;
+		bool	IsResizable = false;
 		GraphicsDeviceType	GraphicsDevice = GraphicsDeviceType::Default;
 		WindowPositionType	WindowPosition = WindowPositionType::Centering;
 		ColorSpaceType		ColorSpace = ColorSpaceType::GammaSpace;
@@ -452,6 +454,8 @@ public:
 
 	virtual void SetSize(int32_t width, int32_t height) {}
 
+	virtual void SetChangedSizeEvent(const std::function<void()>& f) {}
+
 	/**
 	@brief	Get the size of frame buffer.
 	@note
@@ -476,7 +480,7 @@ public:
 	virtual void* GetHandle() const { return nullptr; }
 
 	/**
-	@brief	Get primiary monitor size.
+		@brief	Get primiary monitor size.
 	*/
 	virtual void GetMonitorSize(int32_t& width, int32_t& height) {}
 

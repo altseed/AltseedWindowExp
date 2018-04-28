@@ -21,6 +21,8 @@ public:
 
 	virtual void SetSize(int32_t width, int32_t height) {}
 
+	virtual void SetChangedSizeEvent(const std::function<void()>& f) {}
+
 	/**
 	@brief	Get the size of frame buffer.
 	@note

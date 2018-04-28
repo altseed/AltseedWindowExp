@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <array>
+#include <functional>
 
 #if defined(_PSVITA)
 
@@ -311,6 +312,7 @@ namespace ap
 		int32_t	WindowWidth = 0;
 		int32_t WindowHeight = 0;
 		bool	IsFullscreenMode = false;
+		bool	IsResizable = false;
 		GraphicsDeviceType	GraphicsDevice = GraphicsDeviceType::Default;
 		WindowPositionType	WindowPosition = WindowPositionType::Centering;
 		ColorSpaceType		ColorSpace = ColorSpaceType::GammaSpace;

@@ -12,10 +12,12 @@ namespace ap
 	private:
 		GLFWwindow*		window = nullptr;
 		bool			isOpenGLMode = true;
-
+		
 		void Terminate();
 
 	public:
+		std::function<void()>	changedSize;
+
 		Window_Impl_PC();
 		virtual ~Window_Impl_PC();
 
@@ -28,6 +30,8 @@ namespace ap
 		void SetTitle(const char16_t* title) override;
 
 		void SetSize(int32_t width, int32_t height) override;
+
+		void SetChangedSizeEvent(const std::function<void()>& f) override;
 
 		void GetFrameBufferSize(int32_t& width, int32_t& height) override;
 
