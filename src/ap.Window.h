@@ -11,6 +11,8 @@ public:
 
 	std::function<void(int,int)>	Resized;
 
+	std::function<void(bool)>	Focused;
+
 	Window() {}
 	virtual ~Window() {}
 

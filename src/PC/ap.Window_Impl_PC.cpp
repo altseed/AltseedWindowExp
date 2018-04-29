@@ -30,6 +30,16 @@ namespace ap
 		}
 	}
 
+	static void GLFLW_FocusCallback(GLFWwindow* window, int b)
+	{
+		auto w_ = (Window_Impl_PC*)glfwGetWindowUserPointer(window);
+
+		if (w_->Focused != nullptr)
+		{
+			w_->Focused(b == GL_TRUE);
+		}
+	}
+
 	void Window_Impl_PC::Terminate()
 	{
 		if (window != nullptr)
@@ -128,6 +138,7 @@ namespace ap
 
 		glfwSetWindowUserPointer(window, this);
 		glfwSetFramebufferSizeCallback(window, GLFLW_ResizeCallback);
+		glfwSetWindowFocusCallback(window, GLFLW_FocusCallback);
 
 		return ErrorCode::OK;
 	}
