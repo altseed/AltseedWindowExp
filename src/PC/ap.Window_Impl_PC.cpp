@@ -24,9 +24,9 @@ namespace ap
 	{
 		auto w_ = (Window_Impl_PC*)glfwGetWindowUserPointer(w);
 
-		if (w_->changedSize != nullptr)
+		if (w_->Resized != nullptr)
 		{
-			w_->changedSize();
+			w_->Resized(x, y);
 		}
 	}
 
@@ -160,11 +160,6 @@ namespace ap
 	void Window_Impl_PC::SetSize(int32_t width, int32_t height)
 	{
 		glfwSetWindowSize(window, width, height);
-	}
-
-	void Window_Impl_PC::SetChangedSizeEvent(const std::function<void()>& f)
-	{
-		changedSize = f;
 	}
 
 	void Window_Impl_PC::GetFrameBufferSize(int32_t& width, int32_t& height)

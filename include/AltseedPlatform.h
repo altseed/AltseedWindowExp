@@ -441,6 +441,9 @@ namespace ap
 class Window
 {
 public:
+
+	std::function<void(int,int)>	Resized;
+
 	Window() {}
 	virtual ~Window() {}
 
@@ -453,8 +456,6 @@ public:
 	virtual void SetTitle(const char16_t* title) {}
 
 	virtual void SetSize(int32_t width, int32_t height) {}
-
-	virtual void SetChangedSizeEvent(const std::function<void()>& f) {}
 
 	/**
 	@brief	Get the size of frame buffer.
