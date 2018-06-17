@@ -39,6 +39,7 @@ Joystick_Impl_PC::Joystick_Impl_PC(Window* window)
 	}
 
 	RefreshConnectedState();
+	RefreshInputState();
 }
 
 Joystick_Impl_PC::~Joystick_Impl_PC()
