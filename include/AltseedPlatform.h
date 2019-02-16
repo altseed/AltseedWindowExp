@@ -407,8 +407,9 @@ public:
 		posY = y;
 	}
 
-	virtual float GetWheel() const { return 0; }
 	virtual void SetWheelCallback(std::function<void(double x, double y)> func) {}
+
+	virtual float GetWheel() const { return 0; }
 
 	virtual InputState GetMouseButtonState(MouseButtons button) const { return InputState::Free; }
 
