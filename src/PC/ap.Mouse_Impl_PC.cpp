@@ -7,10 +7,17 @@ namespace ap
 
 static double wheelTemp = 0;
 static bool wheelCalled = false;
+std::function<void(double x, double y)> wheelCallback;
+
 static void GetWheelInternal(GLFWwindow* wHandle, double x, double y)
 {
 	wheelTemp = y;
 	wheelCalled = true;
+
+	if (wheelCallback != nullptr)
+	{
+		wheelCallback(x, y);
+	}
 }
 
 Mouse_Impl_PC::Mouse_Impl_PC(Window* window)
@@ -55,6 +62,11 @@ void Mouse_Impl_PC::SetPosition(float x, float y)
 	glfwSetCursorPos(w_, x, y);
 
 	Mouse::SetPosition(x, y);
+}
+
+void Mouse_Impl_PC::SetWheelCallback(std::function<void(double x, double y)> func)
+{
+	wheelCallback = func;
 }
 
 float Mouse_Impl_PC::GetWheel() const

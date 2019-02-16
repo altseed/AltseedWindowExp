@@ -25,6 +25,8 @@ namespace ap
 
 		void SetPosition(float x, float y) override;
 
+		void SetWheelCallback(std::function<void(double x, double y)> func) override;
+
 		float GetWheel() const override;
 
 		InputState GetMouseButtonState(MouseButtons button) const override;

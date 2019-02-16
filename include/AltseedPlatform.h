@@ -408,6 +408,7 @@ public:
 	}
 
 	virtual float GetWheel() const { return 0; }
+	virtual void SetWheelCallback(std::function<void(double x, double y)> func) {}
 
 	virtual InputState GetMouseButtonState(MouseButtons button) const { return InputState::Free; }
 
