@@ -27,11 +27,9 @@ with aceutils.CurrentDir('../Temp'):
     with aceutils.CurrentDir('glfw_bin'):
         if aceutils.isWin():
             aceutils.call(
-                aceutils.cmd_cmake+r'-D USE_MSVC_RUNTIME_LIBRARY_DLL:BOOL=OFF -D USE_INTERNAL_LOADER:BOOL=OFF ../' + pathname + '/')
-            aceutils.call(aceutils.cmd_compile +
-                          r'ALL_BUILD.vcxproj /p:configuration=Debug')
-            aceutils.call(aceutils.cmd_compile +
-                          r'ALL_BUILD.vcxproj /p:configuration=Release')
+                aceutils.cmd_cmake+r'-D USE_MSVC_RUNTIME_LIBRARY_DLL:BOOL=OFF -D GLFW_BUILD_EXAMPLES:BOOL=OFF -D GLFW_BUILD_TESTS:BOOL=OFF ../' + pathname + '/')
+            aceutils.call('cmake --build . --config Debug')
+            aceutils.call('cmake --build . --config Release')
         elif aceutils.isMac():
             aceutils.call(r'cmake -G "Unix Makefiles" -D BUILD_SHARED_LIBS:BOOL=OFF -D CMAKE_INSTALL_PREFIX:PATH=../.. "-DCMAKE_OSX_ARCHITECTURES=x86_64' +
                           (';i386' if aceutils.Isi386() else '') + r'" ../' + pathname + '/')
@@ -44,11 +42,9 @@ with aceutils.CurrentDir('../Temp'):
     with aceutils.CurrentDir('glfw_bin_x64'):
         if aceutils.isWin():
             aceutils.call(aceutils.cmd_cmake_x64 +
-                          r'-D USE_MSVC_RUNTIME_LIBRARY_DLL:BOOL=OFF ../' + pathname + '/')
-            aceutils.call(aceutils.cmd_compile +
-                          r'ALL_BUILD.vcxproj /p:configuration=Debug')
-            aceutils.call(aceutils.cmd_compile +
-                          r'ALL_BUILD.vcxproj /p:configuration=Release')
+                          r'-D USE_MSVC_RUNTIME_LIBRARY_DLL:BOOL=OFF -D GLFW_BUILD_EXAMPLES:BOOL=OFF -D GLFW_BUILD_TESTS:BOOL=OFF ../' + pathname + '/')
+            aceutils.call('cmake --build . --config Debug')
+            aceutils.call('cmake --build . --config Release')
 
     aceutils.mkdir(r"../include/GLFW/")
 
